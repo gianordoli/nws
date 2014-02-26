@@ -1,6 +1,7 @@
 #include "testApp.h"
 
 int mode;
+float fader;
 vector<Particle> myParticles;
 
 //--------------------------------------------------------------
@@ -8,10 +9,12 @@ void testApp::setup(){
     
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
+	ofEnableSmoothing();
 	
 	ofBackground(0,130,164);
     
     mode = 0;
+    fader = 0;
     
     for(int i=0; i < NUM_PARTICLES; i++){
         Particle thisParticle;
@@ -19,13 +22,20 @@ void testApp::setup(){
         myParticles.push_back(thisParticle);
     }
     
+    gui = new ofxUISuperCanvas("Variables");
+    gui->addSpacer();
+        gui->addSlider("FADER", 0, 1, fader);
+    gui->autoSizeToFitWidgets();
+    ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
+    gui->loadSettings("guiSettings.xml");
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-    float faderX = mouseX/float(ofGetWidth());
+//    float faderX = mouseX/float(ofGetWidth());
+//    cout << fader;
     for(int i=0; i < NUM_PARTICLES; i++){
-        myParticles[i].update(mode, faderX);
+        myParticles[i].update(mode, fader);
     }
 }
 
@@ -36,11 +46,34 @@ void testApp::draw(){
     }
 }
 
+void testApp::guiEvent(ofxUIEventArgs &e){
+	string name = e.widget->getName();
+	int kind = e.widget->getKind();
+	
+	if(name == "FADER"){
+		ofxUISlider *slider = (ofxUISlider *) e.widget;
+		fader = slider->getScaledValue();
+    }
+}
+
+void testApp::exit(){
+    gui->saveSettings("guiSettings.xml");
+    delete gui;
+}
+
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
     //    cout << key;
     mode = key - 48;
-    cout << mode;
+//    cout << mode;
+    switch (key){
+        case 'g':{
+            gui->toggleVisible();
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 //--------------------------------------------------------------
