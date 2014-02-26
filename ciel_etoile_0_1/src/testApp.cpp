@@ -1,7 +1,11 @@
 #include "testApp.h"
 
+ofColor bgColor;
+
 int mode;
-float fader;
+float expansion;
+float circleSize;
+float particleSize;
 vector<Particle> myParticles;
 
 //--------------------------------------------------------------
@@ -11,20 +15,29 @@ void testApp::setup(){
 	ofSetFrameRate(60);
 	ofEnableSmoothing();
 	
-	ofBackground(0,130,164);
+    bgColor.set(0, 180, 180, 20);
+    
+    ofSetBackgroundAuto(false);
+	ofBackground(bgColor);
     
     mode = 0;
-    fader = 0;
+    expansion = 0;
+    circleSize = 0;
+    particleSize = 1;
     
     for(int i=0; i < NUM_PARTICLES; i++){
         Particle thisParticle;
-        thisParticle.init(NUM_PARTICLES, i);
+        thisParticle.init(NUM_PARTICLES, i, circleSize, particleSize);
         myParticles.push_back(thisParticle);
     }
     
     gui = new ofxUISuperCanvas("Variables");
     gui->addSpacer();
-        gui->addSlider("FADER", 0, 1, fader);
+        gui->addSlider("EXPANSION", 0, 1, expansion);
+    gui->addSpacer();
+        gui->addSlider("CIRCLE SIZE", 0, ofGetHeight()/2 - 100, circleSize);
+    gui->autoSizeToFitWidgets();
+        gui->addSlider("PARTICLE SIZE", 1, 50, particleSize);
     gui->autoSizeToFitWidgets();
     ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
     gui->loadSettings("guiSettings.xml");
@@ -32,16 +45,18 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-//    float faderX = mouseX/float(ofGetWidth());
-//    cout << fader;
-    for(int i=0; i < NUM_PARTICLES; i++){
-        myParticles[i].update(mode, fader);
+//    float expansionX = mouseX/float(ofGetWidth());
+//    cout << expansion;
+    for(int i=0; i < myParticles.size(); i++){
+        myParticles[i].update(myParticles.size(), mode, expansion, circleSize, particleSize);
     }
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    for(int i=0; i < NUM_PARTICLES; i++){
+    ofSetColor(bgColor);
+    ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    for(int i=0; i < myParticles.size(); i++){
         myParticles[i].draw();
     }
 }
@@ -50,9 +65,15 @@ void testApp::guiEvent(ofxUIEventArgs &e){
 	string name = e.widget->getName();
 	int kind = e.widget->getKind();
 	
-	if(name == "FADER"){
+	if(name == "EXPANSION"){
 		ofxUISlider *slider = (ofxUISlider *) e.widget;
-		fader = slider->getScaledValue();
+		expansion = slider->getScaledValue();
+    }else if(name == "CIRCLE SIZE"){
+		ofxUISlider *slider = (ofxUISlider *) e.widget;
+		circleSize = slider->getScaledValue();
+    }else if(name == "PARTICLE SIZE"){
+        ofxUISlider *slider = (ofxUISlider *) e.widget;
+        particleSize = slider->getScaledValue();
     }
 }
 

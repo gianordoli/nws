@@ -12,15 +12,15 @@
 class Particle{
 public:
     //functions
-    void init(int nParticles, int i);
-    void update(int mode, float fader);
+    void init(int nParticles, int i, float circleSize, float particleSize);
+    void update(int nParticles, int mode, float expander, float circleSize, float particleSize);
     void draw();
     
     //variables
+    int i;
     ofPoint pos;
     ofPoint randomPos;
     ofPoint circlePos;
     ofColor color;
     float size;
-    float circleSize;
 };
