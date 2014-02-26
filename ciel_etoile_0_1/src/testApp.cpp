@@ -2,7 +2,8 @@
 
 ofColor bgColor;
 
-int mode;
+vector<string> modes;
+string selectedMode;
 float expansion;
 float circleSize;
 float particleSize;
@@ -20,7 +21,9 @@ void testApp::setup(){
     ofSetBackgroundAuto(false);
 	ofBackground(bgColor);
     
-    mode = 0;
+    modes.push_back("static");
+    modes.push_back("fuzz");
+    selectedMode = modes[0];
     expansion = 0;
     circleSize = 0;
     particleSize = 1;
@@ -36,8 +39,12 @@ void testApp::setup(){
         gui->addSlider("EXPANSION", 0, 1, expansion);
     gui->addSpacer();
         gui->addSlider("CIRCLE SIZE", 0, ofGetHeight()/2 - 100, circleSize);
-    gui->autoSizeToFitWidgets();
+    gui->addSpacer();
         gui->addSlider("PARTICLE SIZE", 1, 50, particleSize);
+    gui->addSpacer();
+    	gui->addRadio("MODES", modes, OFX_UI_ORIENTATION_HORIZONTAL);
+    gui->addSpacer();
+        gui->addToggle("FULLSCREEN", false);
     gui->autoSizeToFitWidgets();
     ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
     gui->loadSettings("guiSettings.xml");
@@ -48,7 +55,7 @@ void testApp::update(){
 //    float expansionX = mouseX/float(ofGetWidth());
 //    cout << expansion;
     for(int i=0; i < myParticles.size(); i++){
-        myParticles[i].update(myParticles.size(), mode, expansion, circleSize, particleSize);
+        myParticles[i].update(myParticles.size(), selectedMode, expansion, circleSize, particleSize);
     }
 }
 
@@ -74,7 +81,15 @@ void testApp::guiEvent(ofxUIEventArgs &e){
     }else if(name == "PARTICLE SIZE"){
         ofxUISlider *slider = (ofxUISlider *) e.widget;
         particleSize = slider->getScaledValue();
+    }else if(e.getName() == "FULLSCREEN"){
+        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
+        ofSetFullscreen(toggle->getValue());
+    }else if(name == "MODES"){
+        ofxUIRadio *radio = (ofxUIRadio *) e.widget;
+        cout << radio->getName() << " value: " << radio->getValue() << " active name: " << radio->getActiveName() << endl;
+        selectedMode = radio->getActiveName();
     }
+
 }
 
 void testApp::exit(){
@@ -84,9 +99,6 @@ void testApp::exit(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-    //    cout << key;
-    mode = key - 48;
-//    cout << mode;
     switch (key){
         case 'g':{
             gui->toggleVisible();

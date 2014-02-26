@@ -13,7 +13,7 @@ class Particle{
 public:
     //functions
     void init(int nParticles, int i, float circleSize, float particleSize);
-    void update(int nParticles, int mode, float expander, float circleSize, float particleSize);
+    void update(int nParticles, string mode, float expander, float circleSize, float particleSize);
     void draw();
     
     //variables

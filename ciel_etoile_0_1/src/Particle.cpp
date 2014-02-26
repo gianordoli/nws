@@ -25,12 +25,12 @@ void Particle::init(int nParticles, int index, float circleSize, float particleS
     pos = randomPos;
 }
 
-void Particle::update(int nParticles, int mode, float expander, float circleSize, float particleSize){
-    
+void Particle::update(int nParticles, string mode, float expander, float circleSize, float particleSize){
+//    cout << mode;
     size = particleSize;
     float angle = ofDegToRad(360/float(nParticles));
     
-    if(mode == 1){
+    if(mode == "fuzz"){
         randomPos.x = ofGetWidth()/2 +
                       cos(angle*i) * (ofRandom(-ofGetHeight()/2, ofGetHeight()/2));
         randomPos.y = ofGetHeight()/2 +
