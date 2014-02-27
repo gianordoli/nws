@@ -8,27 +8,42 @@
 <Widget>
     <Kind>4</Kind>
     <Name>EXPANSION</Name>
-    <Value>1.000000000</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>CIRCLE SIZE</Name>
-    <Value>284.000000000</Value>
+    <Name>SHAPE SIZE</Name>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>PARTICLE SIZE</Name>
-    <Value>11.620690346</Value>
+    <Value>22.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>static</Name>
+    <Name>circle</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>fuzz</Name>
+    <Name>spiral</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>star</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>static</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>fuzz</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
