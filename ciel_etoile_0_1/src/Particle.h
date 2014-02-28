@@ -12,11 +12,12 @@
 class Particle{
 public:
     //functions
-    void init(int _nParticles, int _i, float _shapeSize, float _size);
-    void update(int _nParticles, string shape, string mode, float expander, float _shapeSize, float _size);
-    void draw();
-    
-    void createShapePos(int nParticles, string shape, float angle);
+    void init(int _nParticles, int _i, float _shapeSize, float _size, string _shape);
+    void update(int _nParticles, float _expansion, float _shapeSize, float _nVertices, float _size, string _shape, string _mode);
+    void draw(float _rotation);
+
+    void createRandomPos();
+    void createShapePos();
     
     //variables
     int nParticles;
@@ -28,4 +29,6 @@ public:
     ofColor color;
     float size;
     float shapeSize;
+    string shape;
+    float nVertices;
 };

@@ -9,8 +9,10 @@ vector<string> shapes;
 string selectedShape;
 
 float expansion;
+float rotation;
 float shapeSize;
 float particleSize;
+float nVertices;
 
 
 vector<Particle> myParticles;
@@ -34,15 +36,18 @@ void testApp::setup(){
     shapes.push_back("circle");
     shapes.push_back("spiral");
     shapes.push_back("star");
+    shapes.push_back("grid");    
     selectedShape = shapes[0];
     
     expansion = 0;
+    rotation = 0;
     shapeSize = ofGetHeight()/2 - 100;
     particleSize = 1;
+    nVertices = 1;
     
     for(int i=0; i < NUM_PARTICLES; i++){
         Particle thisParticle;
-        thisParticle.init(NUM_PARTICLES, i, shapeSize, particleSize);
+        thisParticle.init(NUM_PARTICLES, i, shapeSize, particleSize, selectedShape);
         myParticles.push_back(thisParticle);
     }
 
@@ -50,7 +55,11 @@ void testApp::setup(){
     gui->addSpacer();
         gui->addSlider("EXPANSION", 0, 1, expansion);
     gui->addSpacer();
+        gui->addSlider("ROTATION", 0, 360, rotation);
+    gui->addSpacer();
         gui->addSlider("SHAPE SIZE", 0, ofGetHeight()/2 - 100, shapeSize);
+    gui->addSpacer();
+        gui->addSlider("VERTICES", 1, 6.78, nVertices);
     gui->addSpacer();
         gui->addSlider("PARTICLE SIZE", 1, 50, particleSize);
     gui->addSpacer();
@@ -61,7 +70,8 @@ void testApp::setup(){
         gui->addToggle("FULLSCREEN", false);
     gui->autoSizeToFitWidgets();
     ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
-    gui->loadSettings("guiSettings.xml");
+//    gui->loadSettings("guiSettings.xml");
+
 }
 
 //--------------------------------------------------------------
@@ -69,7 +79,7 @@ void testApp::update(){
 //    float expansionX = mouseX/float(ofGetWidth());
 //    cout << expansion;
     for(int i=0; i < myParticles.size(); i++){
-        myParticles[i].update(myParticles.size(), selectedShape, selectedMode, expansion, shapeSize, particleSize);
+        myParticles[i].update(myParticles.size(), expansion, shapeSize, nVertices, particleSize, selectedShape, selectedMode);
     }
 }
 
@@ -78,7 +88,7 @@ void testApp::draw(){
     ofSetColor(bgColor);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     for(int i=0; i < myParticles.size(); i++){
-        myParticles[i].draw();
+        myParticles[i].draw(rotation);
     }
 }
 
@@ -89,9 +99,15 @@ void testApp::guiEvent(ofxUIEventArgs &e){
 	if(name == "EXPANSION"){
 		ofxUISlider *slider = (ofxUISlider *) e.widget;
 		expansion = slider->getScaledValue();
+    }else if(name == "ROTATION"){
+		ofxUISlider *slider = (ofxUISlider *) e.widget;
+		rotation = slider->getScaledValue();
     }else if(name == "SHAPE SIZE"){
 		ofxUISlider *slider = (ofxUISlider *) e.widget;
 		shapeSize = slider->getScaledValue();
+    }else if(name == "VERTICES"){
+		ofxUISlider *slider = (ofxUISlider *) e.widget;
+		nVertices = slider->getScaledValue();
     }else if(name == "PARTICLE SIZE"){
         ofxUISlider *slider = (ofxUISlider *) e.widget;
         particleSize = slider->getScaledValue();
@@ -102,6 +118,7 @@ void testApp::guiEvent(ofxUIEventArgs &e){
         ofxUIRadio *radio = (ofxUIRadio *) e.widget;
         cout << radio->getName() << " value: " << radio->getValue() << " active name: " << radio->getActiveName() << endl;
         selectedShape = radio->getActiveName();
+        
     }else if(name == "MODES"){
         ofxUIRadio *radio = (ofxUIRadio *) e.widget;
         cout << radio->getName() << " value: " << radio->getValue() << " active name: " << radio->getActiveName() << endl;
