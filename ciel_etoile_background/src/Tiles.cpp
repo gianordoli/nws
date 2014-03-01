@@ -16,7 +16,7 @@ void Tiles:: setup(string _mode, int tempX, int tempY) {
 	gridPos.x = tempX;
 	gridPos.y = tempY;
     
-    color.set(0, 180, 180, 100);
+    color.set(0, 180, 180, 60);
     
     breakage = size;
     createTileVertices();
@@ -24,9 +24,9 @@ void Tiles:: setup(string _mode, int tempX, int tempY) {
     
     currVertices = tileVertices;
     
-    for(int i = 0; i < currVertices.size(); i++){
-        cout << tileVertices[i].x << endl;
-    }
+//    for(int i = 0; i < currVertices.size(); i++){
+//        cout << tileVertices[i].x << endl;
+//    }
 }
 //--------------------------------------------------------------
 
@@ -52,16 +52,16 @@ void Tiles:: draw(float mouseX, float mouseY) {
     ofTranslate(gridPos.x, gridPos.y);
     
         if(mode == "3D"){
-//            float diameter = ofDist(mouseX, mouseY, gridPos.x, gridPos.y);
-//            //		cout << mouseX;
-//            diameter = diameter/500 * 40;
-            
-//            ofTranslate(ofGetWidth()/8, 0, diameter * 10);
-//            ofRect(0, 0, size/2, size/2);    //// also nice: ellipse(...)
+//            float dist = ofDist(mouseX, mouseY, gridPos.x, gridPos.y);
+//            float zOffset = ofMap(dist, 0, ofGetWidth(), size*4, size/4);
             float dist = ofDist(mouseX, mouseY, gridPos.x, gridPos.y);
-            float newSize = ofMap(dist, 0, ofGetWidth(), size, size/4);
-            ofRect(0, 0, newSize, newSize);
-            cout << dist << endl;
+            float zOffset = ofMap(dist, -ofGetWidth()/4, ofGetWidth()/4, 0, size*10, true);
+            ofTranslate(0, 0, zOffset);
+            ofRect(0, 0, size, size);    //// also nice: ellipse(...)
+//            float dist = ofDist(mouseX, mouseY, gridPos.x, gridPos.y);
+//            float newSize = ofMap(dist, 0, ofGetWidth(), size, size/4);
+//            ofRect(0, 0, newSize, newSize);
+//            cout << dist << endl;
         
         }else if(mode == "fragments"){
             

@@ -8,7 +8,8 @@ void testApp::setup(){
 	ofEnableSmoothing();
     ofSetBackgroundAuto(false);
     ofToggleFullscreen();
-	
+
+//    bgColor.set(0, 180, 180);	
 //    bgColor.set(0, 180, 180, 20);
     bgColor.set(0, 20);
 	ofBackground(bgColor);
@@ -61,10 +62,10 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-//    // PARTICLES
-//    for(int i=0; i < myParticles.size(); i++){
-//        myParticles[i].update(myParticles.size(), expansion, shapeSize, nVertices, particleSize, selectedShape, selectedMode);
-//    }
+    // PARTICLES
+    for(int i=0; i < myParticles.size(); i++){
+        myParticles[i].update(myParticles.size(), expansion, shapeSize, nVertices, particleSize, selectedShape, selectedMode);
+    }
     
     //BACKGROUND
 	for (int i=0; i < myTiles.size(); i++) {
@@ -83,10 +84,10 @@ void testApp::draw(){
         myTiles[i].draw(mouseX, mouseY);
     }
     
-//    //PARTICLES
-//    for(int i=0; i < myParticles.size(); i++){
-//        myParticles[i].draw(rotation);
-//    }
+    //PARTICLES
+    for(int i=0; i < myParticles.size(); i++){
+        myParticles[i].draw(rotation);
+    }
     
 }
 
