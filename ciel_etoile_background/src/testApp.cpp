@@ -22,20 +22,19 @@ void testApp::setup(){
 		}
 	}
     
-    gui = new ofxUISuperCanvas("Variables");
-    gui->addSpacer();
-        gui->addRadio("TILE MODES", tileModes, OFX_UI_ORIENTATION_HORIZONTAL);
-    gui->addSpacer();
-        gui->addToggle("FULLSCREEN", false);
-    gui->autoSizeToFitWidgets();
-    ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
-    gui->loadSettings("guiSettings.xml");
+    gui2 = new ofxUISuperCanvas("BACKGROUND");
+    gui2->addSpacer();
+        gui2->addRadio("TILE MODES", tileModes, OFX_UI_ORIENTATION_HORIZONTAL);
+    gui2->addSpacer();
+        gui2->addToggle("FULLSCREEN", false);
+    gui2->autoSizeToFitWidgets();
+    ofAddListener(gui2->newGUIEvent,this,&testApp::guiEvent);
+    gui2->loadSettings("gui2Settings.xml");
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 
-	//draw for Fragments	
 	for (int i=0; i < myTiles.size(); i++) {
 		myTiles[i].update(selectedTileMode, mouseX, mouseY);
 	}
@@ -51,21 +50,7 @@ void testApp::draw(){
 	for (int i = 0; i < myTiles.size(); i++) {
         myTiles[i].draw(mouseX, mouseY);
     }
-    
-//draw for Tiles	
-//	for (int i=0; i < myTiles.size(); i++) {		
-//		myTiles[i].draw(mouseX, mouseY);
-//	}
-	//draw for Fragments
-//	int tileCount = 20;
-//	for (int gridY=0; gridY<tileCount; gridY++) {
-//		for (int gridX=0; gridX<tileCount; gridX++) {
-//			Fragments thisFragment;			
-//			thisFragment.draw(gridX, gridY);
-//			myFragments.push_back(thisFragment);
-//		}
-//
-//	}
+
 }
 
 void testApp::guiEvent(ofxUIEventArgs &e){

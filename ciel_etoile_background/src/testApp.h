@@ -1,8 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
- #include "Tiles.h"
-#include "Fragments.h"
+#include "Tiles.h"
 #include "ofxUI.h"
 
 class testApp : public ofBaseApp{
@@ -23,10 +22,9 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 	
 		vector <Tiles> myTiles;
-		vector <Fragments> myFragments;
         vector <string> tileModes;
         string selectedTileMode;
 
-	ofxUISuperCanvas *gui;
+	ofxUISuperCanvas *gui2;
 	void guiEvent(ofxUIEventArgs &e);
 };

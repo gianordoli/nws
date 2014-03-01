@@ -8,27 +8,57 @@
 <Widget>
     <Kind>4</Kind>
     <Name>EXPANSION</Name>
-    <Value>0.064039409</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>CIRCLE SIZE</Name>
-    <Value>0.000000000</Value>
+    <Name>ROTATION</Name>
+    <Value>168.472900391</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SHAPE SIZE</Name>
+    <Value>284.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>VERTICES</Name>
+    <Value>6.780000210</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>PARTICLE SIZE</Name>
-    <Value>22.724138260</Value>
+    <Value>16.448276520</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>static</Name>
+    <Name>circle</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>spiral</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>star</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>fuzz</Name>
+    <Name>grid</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>static</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>fuzz</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
