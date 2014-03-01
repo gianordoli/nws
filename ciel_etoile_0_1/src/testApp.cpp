@@ -34,20 +34,20 @@ void testApp::setup(){
         myParticles.push_back(thisParticle);
     }
     
-    gui = new ofxUISuperCanvas("Variables");
-    gui->addSpacer();
-        gui->addSlider("EXPANSION", 0, 1, expansion);
-    gui->addSpacer();
-        gui->addSlider("CIRCLE SIZE", 0, ofGetHeight()/2 - 100, circleSize);
-    gui->addSpacer();
-        gui->addSlider("PARTICLE SIZE", 1, 50, particleSize);
-    gui->addSpacer();
-    	gui->addRadio("MODES", modes, OFX_UI_ORIENTATION_HORIZONTAL);
-    gui->addSpacer();
-        gui->addToggle("FULLSCREEN", false);
-    gui->autoSizeToFitWidgets();
-    ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
-    gui->loadSettings("guiSettings.xml");
+    gui1 = new ofxUISuperCanvas("Variables");
+    gui1->addSpacer();
+        gui1->addSlider("EXPANSION", 0, 1, expansion);
+    gui1->addSpacer();
+        gui1->addSlider("CIRCLE SIZE", 0, ofGetHeight()/2 - 100, circleSize);
+    gui1->addSpacer();
+        gui1->addSlider("PARTICLE SIZE", 1, 50, particleSize);
+    gui1->addSpacer();
+    	gui1->addRadio("MODES", modes, OFX_UI_ORIENTATION_HORIZONTAL);
+    gui1->addSpacer();
+        gui1->addToggle("FULLSCREEN", false);
+    gui1->autoSizeToFitWidgets();
+    ofAddListener(gui1->newGUIEvent,this,&testApp::guiEvent);
+    gui1->loadSettings("gui1Settings.xml");
 }
 
 //--------------------------------------------------------------
@@ -93,15 +93,15 @@ void testApp::guiEvent(ofxUIEventArgs &e){
 }
 
 void testApp::exit(){
-    gui->saveSettings("guiSettings.xml");
-    delete gui;
+    gui1->saveSettings("gui1Settings.xml");
+    delete gui1;
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
     switch (key){
         case 'g':{
-            gui->toggleVisible();
+            gui1->toggleVisible();
         }
             break;
         default:

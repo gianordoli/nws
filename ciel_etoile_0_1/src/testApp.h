@@ -24,7 +24,12 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
-	ofxUISuperCanvas *gui;
+	void setGUI1();
+	void setGUI2();
+	
+	ofxUISuperCanvas *gui1;
+	ofxUISuperCanvas *gui2;
+    
 	void guiEvent(ofxUIEventArgs &e);
     
 };
