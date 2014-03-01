@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-// #include "Tiles.h"
+ #include "Tiles.h"
 #include "Fragments.h"
 
 class testApp : public ofBaseApp{
@@ -21,7 +21,9 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 	
-//		vector <Tiles> myTiles;
+		vector <Tiles> myTiles;
 		vector <Fragments> myFragments;
+        vector <string> tileModes;
+        string selectedTileMode;
 	
 };

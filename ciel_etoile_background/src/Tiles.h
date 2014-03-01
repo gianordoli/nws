@@ -12,16 +12,17 @@
 class Tiles : public ofBaseApp{
 	
 public:
-	void setup(int tempX, int tempY);
-	void update();
+	void setup(string _mode, int tempX, int tempY);
+	void update(string _mode, float mouseX, float mouseY);
 	void draw (float mouseX, float mouseY);
 	
 	float tileCount;
 	ofColor moduleColor;
 	int moduleAlpha;
-	int max_distance;
 	
-	int gridX;
-	int gridY;	
+    float size;
+    ofPoint gridPos;
+    
+    string mode;
 };
 

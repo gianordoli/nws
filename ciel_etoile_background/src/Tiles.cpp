@@ -9,41 +9,38 @@
 
 #include "Tiles.h"
 
-void Tiles:: setup(int tempX, int tempY) {
-	
-	gridX = tempX;
-	gridY = tempY;	
-	
-//	cout << "x: " << gridX << ", y: " << gridY << endl;	
-	
-	tileCount = 20;
-	moduleColor.set(0);
-	moduleAlpha = 180;
-	max_distance = 500; 
-	
+void Tiles:: setup(string _mode, int tempX, int tempY) {
+    
+    size = 40;
+    mode = _mode;
+	gridPos.x = tempX;
+	gridPos.y = tempY;
 
 }
 //--------------------------------------------------------------
 
-void Tiles:: update() {
+void Tiles:: update(string _mode, float mouseX, float mouseY) {
+    mode = _mode;
 }
 
 //--------------------------------------------------------------
 
 void Tiles:: draw(float mouseX, float mouseY) {
 
-ofNoFill();
-ofSetColor(moduleColor, moduleAlpha);
-ofSetLineWidth(3);
+    ofSetColor(120, 0, 60);
 
-		
-		float diameter = ofDist(mouseX, mouseY, gridX, gridY);
-//		cout << mouseX;
-		diameter = diameter/max_distance * 40;
-		ofPushMatrix();
-			ofTranslate(gridX, gridY, diameter*5);
-				ofRect(0, 0, diameter, diameter);    //// also nice: ellipse(...)
-		ofPopMatrix(); 
+    ofPushMatrix();
+    ofTranslate(gridPos.x, gridPos.y);
+    if(mode == "3D"){
+        float diameter = ofDist(mouseX, mouseY, gridPos.x, gridPos.y);
+        //		cout << mouseX;
+        diameter = diameter/500 * 40;
+        
+        ofTranslate(ofGetWidth()/8, 0, diameter * 10);
+        ofRect(0, 0, size/8, size/8);    //// also nice: ellipse(...)
+    
+    }
+    ofPopMatrix();
 //ofRect(gridX, gridY, 20, 20);	
 
 }
