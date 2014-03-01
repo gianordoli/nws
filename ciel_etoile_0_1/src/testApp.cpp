@@ -44,11 +44,12 @@ void testApp::setup(){
 	tileModes.push_back("fragments");
     selectedTileMode = tileModes[1];
     
-	for (int gridY=0; gridY< ofGetWidth(); gridY +=20) {
-		for (int gridX=0; gridX< ofGetHeight(); gridX+=20) {
+	for (int gridY=0; gridY< ofGetHeight(); gridY += 40) {
+		for (int gridX=0; gridX< ofGetWidth(); gridX+= 40) {
 			Tiles thisTile;
 			thisTile.setup(selectedTileMode, gridX, gridY);
 			myTiles.push_back(thisTile);
+//            cout << gridX << endl;
 		}
 	}
     /*---------------------------------------------*/
@@ -60,10 +61,10 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-    // PARTICLES
-    for(int i=0; i < myParticles.size(); i++){
-        myParticles[i].update(myParticles.size(), expansion, shapeSize, nVertices, particleSize, selectedShape, selectedMode);
-    }
+//    // PARTICLES
+//    for(int i=0; i < myParticles.size(); i++){
+//        myParticles[i].update(myParticles.size(), expansion, shapeSize, nVertices, particleSize, selectedShape, selectedMode);
+//    }
     
     //BACKGROUND
 	for (int i=0; i < myTiles.size(); i++) {
@@ -82,10 +83,10 @@ void testApp::draw(){
         myTiles[i].draw(mouseX, mouseY);
     }
     
-    //PARTICLES
-    for(int i=0; i < myParticles.size(); i++){
-        myParticles[i].draw(rotation);
-    }
+//    //PARTICLES
+//    for(int i=0; i < myParticles.size(); i++){
+//        myParticles[i].draw(rotation);
+//    }
     
 }
 

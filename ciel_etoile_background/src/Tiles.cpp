@@ -16,13 +16,17 @@ void Tiles:: setup(string _mode, int tempX, int tempY) {
 	gridPos.x = tempX;
 	gridPos.y = tempY;
     
-    color.set(0, 180, 180, 20);
+    color.set(0, 180, 180, 100);
     
     breakage = size;
     createTileVertices();
     createFragmentVertices();
     
     currVertices = tileVertices;
+    
+    for(int i = 0; i < currVertices.size(); i++){
+        cout << tileVertices[i].x << endl;
+    }
 }
 //--------------------------------------------------------------
 
@@ -48,18 +52,23 @@ void Tiles:: draw(float mouseX, float mouseY) {
     ofTranslate(gridPos.x, gridPos.y);
     
         if(mode == "3D"){
-            float diameter = ofDist(mouseX, mouseY, gridPos.x, gridPos.y);
-            //		cout << mouseX;
-            diameter = diameter/500 * 40;
+//            float diameter = ofDist(mouseX, mouseY, gridPos.x, gridPos.y);
+//            //		cout << mouseX;
+//            diameter = diameter/500 * 40;
             
-            ofTranslate(ofGetWidth()/8, 0, diameter * 10);
-            ofRect(0, 0, size/2, size/2);    //// also nice: ellipse(...)
+//            ofTranslate(ofGetWidth()/8, 0, diameter * 10);
+//            ofRect(0, 0, size/2, size/2);    //// also nice: ellipse(...)
+            float dist = ofDist(mouseX, mouseY, gridPos.x, gridPos.y);
+            float newSize = ofMap(dist, 0, ofGetWidth(), size, size/4);
+            ofRect(0, 0, newSize, newSize);
+            cout << dist << endl;
         
         }else if(mode == "fragments"){
             
             ofBeginShape();
             for(int i = 0; i < currVertices.size(); i++){
                 ofVertex(currVertices[i]);
+//                ofVertex(tileVertices[i]);
             }
             ofEndShape(true);
         }
@@ -71,20 +80,20 @@ void Tiles::createTileVertices(){
 
     ofPoint thisVertex;
 
-    thisVertex.x = gridPos.x;
-    thisVertex.y = gridPos.y;
+    thisVertex.x = 0;
+    thisVertex.y = 0;
     tileVertices.push_back(thisVertex);
     
-    thisVertex.x = gridPos.x + size;
-    thisVertex.y = gridPos.y;
+    thisVertex.x = size;
+    thisVertex.y = 0;
     tileVertices.push_back(thisVertex);
     
-    thisVertex.x = gridPos.x + size;
-    thisVertex.y = gridPos.y + size;
+    thisVertex.x = size;
+    thisVertex.y = size;
     tileVertices.push_back(thisVertex);
     
-    thisVertex.x = gridPos.x;
-    thisVertex.y = gridPos.y + size;
+    thisVertex.x = 0;
+    thisVertex.y = size;
     tileVertices.push_back(thisVertex);
 }
 
