@@ -4,7 +4,7 @@
 #include "Particle.h"
 #include "ofxUI.h"
 
-#define NUM_PARTICLES 100
+#define NUM_PARTICLES 256
 
 class testApp : public ofBaseApp{
     
