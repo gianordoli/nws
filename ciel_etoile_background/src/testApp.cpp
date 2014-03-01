@@ -13,7 +13,6 @@ void testApp::setup(){
 	tileModes.push_back("fragments");
     selectedTileMode = tileModes[0];
 
-//    setup for Tiles	
 	for (int gridY=0; gridY< ofGetWidth(); gridY +=20) {
 		for (int gridX=0; gridX< ofGetHeight(); gridX+=20) {
 			Tiles thisTile;			

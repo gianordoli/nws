@@ -35,6 +35,21 @@ void testApp::setup(){
     }
     /*---------------------------------------------*/
 
+
+    /*---------------- BACKGROUND -----------------*/
+	tileModes.push_back("3D");
+	tileModes.push_back("fragments");
+    selectedTileMode = tileModes[0];
+    
+	for (int gridY=0; gridY< ofGetWidth(); gridY +=20) {
+		for (int gridX=0; gridX< ofGetHeight(); gridX+=20) {
+			Tiles thisTile;
+			thisTile.setup(selectedTileMode, gridX, gridY);
+			myTiles.push_back(thisTile);
+		}
+	}
+    /*---------------------------------------------*/
+    
     setGUI1();
     setGUI2();
 
@@ -42,44 +57,65 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-//    float expansionX = mouseX/float(ofGetWidth());
-//    cout << expansion;
+    // PARTICLES
     for(int i=0; i < myParticles.size(); i++){
         myParticles[i].update(myParticles.size(), expansion, shapeSize, nVertices, particleSize, selectedShape, selectedMode);
     }
+    
+    //BACKGROUND
+	for (int i=0; i < myTiles.size(); i++) {
+		myTiles[i].update(selectedTileMode, mouseX, mouseY);
+	}
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    
     ofSetColor(bgColor);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    
+    //PARTICLES
     for(int i=0; i < myParticles.size(); i++){
         myParticles[i].draw(rotation);
     }
+
+    //BACKGROUND
+	for (int i = 0; i < myTiles.size(); i++) {
+        myTiles[i].draw(mouseX, mouseY);
+    }
+    
 }
 
 void testApp::guiEvent(ofxUIEventArgs &e){
 	string name = e.widget->getName();
 	int kind = e.widget->getKind();
-	
-	if(name == "EXPANSION"){
+
+    if(e.getName() == "FULLSCREEN"){
+        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
+        ofSetFullscreen(toggle->getValue());
+    
+        
+    /*----------------- PARTICLES -----------------*/
+	}else if(name == "EXPANSION"){
 		ofxUISlider *slider = (ofxUISlider *) e.widget;
 		expansion = slider->getScaledValue();
+        
     }else if(name == "ROTATION"){
 		ofxUISlider *slider = (ofxUISlider *) e.widget;
 		rotation = slider->getScaledValue();
+        
     }else if(name == "SHAPE SIZE"){
 		ofxUISlider *slider = (ofxUISlider *) e.widget;
 		shapeSize = slider->getScaledValue();
+        
     }else if(name == "VERTICES"){
 		ofxUISlider *slider = (ofxUISlider *) e.widget;
 		nVertices = slider->getScaledValue();
+        
     }else if(name == "PARTICLE SIZE"){
         ofxUISlider *slider = (ofxUISlider *) e.widget;
         particleSize = slider->getScaledValue();
-    }else if(e.getName() == "FULLSCREEN"){
-        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
-        ofSetFullscreen(toggle->getValue());
+
     }else if(name == "SHAPES"){
         ofxUIRadio *radio = (ofxUIRadio *) e.widget;
         cout << radio->getName() << " value: " << radio->getValue() << " active name: " << radio->getActiveName() << endl;
@@ -89,6 +125,13 @@ void testApp::guiEvent(ofxUIEventArgs &e){
         ofxUIRadio *radio = (ofxUIRadio *) e.widget;
         cout << radio->getName() << " value: " << radio->getValue() << " active name: " << radio->getActiveName() << endl;
         selectedMode = radio->getActiveName();
+        
+        
+    /*---------------- BACKGROUND -----------------*/
+    }else if(name == "TILE MODES"){
+        ofxUIRadio *radio = (ofxUIRadio *) e.widget;
+        cout << radio->getName() << " value: " << radio->getValue() << " active name: " << radio->getActiveName() << endl;
+        selectedTileMode = radio->getActiveName();
     }
 }
 
@@ -116,7 +159,12 @@ void testApp::setGUI1(){
 }
 
 void testApp::setGUI2(){
-    
+    gui2 = new ofxUISuperCanvas("BACKGROUND");
+    gui2->addSpacer();
+    gui2->addRadio("TILE MODES", tileModes, OFX_UI_ORIENTATION_HORIZONTAL);
+    gui2->autoSizeToFitWidgets();
+    ofAddListener(gui2->newGUIEvent,this,&testApp::guiEvent);
+    gui2->loadSettings("gui2Settings.xml");
 }
 
 void testApp::exit(){

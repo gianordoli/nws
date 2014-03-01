@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		04C82720B149CE576B8CBB06 /* ofxUIToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48CCCEA0C681DE8B4945111B /* ofxUIToggle.cpp */; };
 		084025DA517D8329301FE1B6 /* ofxUIEventArgs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8896AC3BECAAA504E3828F4 /* ofxUIEventArgs.cpp */; };
+		0F78975E18C22BF70011A742 /* Tiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F78975C18C22BF70011A742 /* Tiles.cpp */; };
 		0FDDA5FC18BE48D400ECB160 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FDDA5FA18BE48D400ECB160 /* Particle.cpp */; };
 		1587708E3CAC72997E43504E /* ofxUIRangeSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2813E36CEFD8D1C1B70E600 /* ofxUIRangeSlider.cpp */; };
 		1DAAC3FB4B98B08AE63F4687 /* ofxUISuperCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38EBD5650A3BF5A499B07525 /* ofxUISuperCanvas.cpp */; };
@@ -116,6 +117,8 @@
 		08A9C84B3CA68561BE01FF37 /* ofxUIWidget.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUIWidget.cpp; path = ../../../addons/ofxUI/src/ofxUIWidget.cpp; sourceTree = SOURCE_ROOT; };
 		0D6768C572B6CA49227C29EA /* ofxUINumberDialer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUINumberDialer.cpp; path = ../../../addons/ofxUI/src/ofxUINumberDialer.cpp; sourceTree = SOURCE_ROOT; };
 		0DE8B77977749C1835A9472B /* ofxUISlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUISlider.cpp; path = ../../../addons/ofxUI/src/ofxUISlider.cpp; sourceTree = SOURCE_ROOT; };
+		0F78975C18C22BF70011A742 /* Tiles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tiles.cpp; path = ../../ciel_etoile_background/src/Tiles.cpp; sourceTree = "<group>"; };
+		0F78975D18C22BF70011A742 /* Tiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tiles.h; path = ../../ciel_etoile_background/src/Tiles.h; sourceTree = "<group>"; };
 		0FDDA5FA18BE48D400ECB160 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
 		0FDDA5FB18BE48D400ECB160 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
 		1553D7111BCBE7834BCC0784 /* ofxUI2DPad.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUI2DPad.cpp; path = ../../../addons/ofxUI/src/ofxUI2DPad.cpp; sourceTree = SOURCE_ROOT; };
@@ -480,6 +483,8 @@
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				0FDDA5FA18BE48D400ECB160 /* Particle.cpp */,
 				0FDDA5FB18BE48D400ECB160 /* Particle.h */,
+				0F78975C18C22BF70011A742 /* Tiles.cpp */,
+				0F78975D18C22BF70011A742 /* Tiles.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -599,6 +604,7 @@
 				084025DA517D8329301FE1B6 /* ofxUIEventArgs.cpp in Sources */,
 				7252706DA14C1BE63950ADDA /* ofxUIFPS.cpp in Sources */,
 				22030CBDCC25D815E7ED6757 /* ofxUIFPSSlider.cpp in Sources */,
+				0F78975E18C22BF70011A742 /* Tiles.cpp in Sources */,
 				3D4EA8E172D3E4A30FEFA969 /* ofxUIImage.cpp in Sources */,
 				7F2CD93F681F3C1547B3BF2C /* ofxUIImageButton.cpp in Sources */,
 				FBD0CD0AFE3849C14E829CAF /* ofxUIImageSampler.cpp in Sources */,

@@ -1,8 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include "Particle.h"
 #include "ofxUI.h"
+#include "Particle.h"
+#include "Tiles.h"
 
 #define NUM_PARTICLES 256
 
@@ -51,4 +52,12 @@ public:
     float particleSize;
     float nVertices;
     /*---------------------------------------------*/
+
+
+    /*---------------- BACKGROUND -----------------*/
+    vector <Tiles> myTiles;
+    vector <string> tileModes;
+    string selectedTileMode;
+    /*---------------------------------------------*/
+
 };

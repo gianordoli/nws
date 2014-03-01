@@ -40,7 +40,7 @@ void Tiles:: update(string _mode, float mouseX, float mouseY) {
 
 void Tiles:: draw(float mouseX, float mouseY) {
 
-    ofSetColor(120, 0, 60);
+    ofSetColor(0, 60);
 
     ofPushMatrix();
     ofTranslate(gridPos.x, gridPos.y);
