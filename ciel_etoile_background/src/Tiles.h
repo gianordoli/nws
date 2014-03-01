@@ -28,5 +28,7 @@ public:
     float breakage;                     //fragmentation index
     
     string mode;
+    
+    ofColor color;
 };
 

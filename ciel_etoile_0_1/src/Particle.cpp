@@ -11,7 +11,9 @@
 void Particle::init(int _nParticles, int _i, float _shapeSize, float _size, string _shape){
     nParticles = _nParticles;
     i = _i;
-    color = 0;
+//    color = 0;
+//    color.set(255);
+    color.set(0);
     size = _size;
     shapeSize = _shapeSize;
     shape = _shape;

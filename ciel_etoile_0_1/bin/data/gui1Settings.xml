@@ -2,28 +2,28 @@
     <Kind>40</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>798.000000000</XPosition>
-    <YPosition>11.000000000</YPosition>
+    <XPosition>1204.000000000</XPosition>
+    <YPosition>23.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>EXPANSION</Name>
-    <Value>0.147783250</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROTATION</Name>
-    <Value>168.472900391</Value>
+    <Value>3.546797991</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SHAPE SIZE</Name>
-    <Value>54.561576843</Value>
+    <Value>284.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>VERTICES</Name>
-    <Value>2.850739002</Value>
+    <Value>6.780000210</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,12 +38,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>spiral</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>star</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -53,15 +53,15 @@
 <Widget>
     <Kind>2</Kind>
     <Name>static</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>fuzz</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>FULLSCREEN</Name>
+    <Name>fuzz</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FULLSCREEN</Name>
+    <Value>1</Value>
 </Widget>

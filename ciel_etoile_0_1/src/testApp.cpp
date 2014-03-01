@@ -7,9 +7,12 @@ void testApp::setup(){
 	ofSetFrameRate(60);
 	ofEnableSmoothing();
     ofSetBackgroundAuto(false);
+    ofToggleFullscreen();
 	
-    bgColor.set(0, 180, 180, 20);
+//    bgColor.set(0, 180, 180, 20);
+    bgColor.set(0, 20);
 	ofBackground(bgColor);
+//	ofBackground(255);
     
     /*----------------- PARTICLES -----------------*/
     modes.push_back("static");
@@ -39,7 +42,7 @@ void testApp::setup(){
     /*---------------- BACKGROUND -----------------*/
 	tileModes.push_back("3D");
 	tileModes.push_back("fragments");
-    selectedTileMode = tileModes[0];
+    selectedTileMode = tileModes[1];
     
 	for (int gridY=0; gridY< ofGetWidth(); gridY +=20) {
 		for (int gridX=0; gridX< ofGetHeight(); gridX+=20) {
@@ -52,7 +55,7 @@ void testApp::setup(){
     
     setGUI1();
     setGUI2();
-
+    
 }
 
 //--------------------------------------------------------------
@@ -70,18 +73,18 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    
+   
     ofSetColor(bgColor);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
-    
-    //PARTICLES
-    for(int i=0; i < myParticles.size(); i++){
-        myParticles[i].draw(rotation);
-    }
 
     //BACKGROUND
 	for (int i = 0; i < myTiles.size(); i++) {
         myTiles[i].draw(mouseX, mouseY);
+    }
+    
+    //PARTICLES
+    for(int i=0; i < myParticles.size(); i++){
+        myParticles[i].draw(rotation);
     }
     
 }
@@ -136,7 +139,7 @@ void testApp::guiEvent(ofxUIEventArgs &e){
 }
 
 void testApp::setGUI1(){
-    gui1 = new ofxUISuperCanvas("Variables");
+    gui1 = new ofxUISuperCanvas("PARTICLES");
     gui1->addSpacer();
     gui1->addSlider("EXPANSION", 0, 1, expansion);
     gui1->addSpacer();
@@ -170,6 +173,8 @@ void testApp::setGUI2(){
 void testApp::exit(){
     gui1->saveSettings("gui1Settings.xml");
     delete gui1;
+    gui2->saveSettings("gui2Settings.xml");
+    delete gui2;
 }
 
 

@@ -16,6 +16,8 @@ void Tiles:: setup(string _mode, int tempX, int tempY) {
 	gridPos.x = tempX;
 	gridPos.y = tempY;
     
+    color.set(0, 180, 180, 20);
+    
     breakage = size;
     createTileVertices();
     createFragmentVertices();
@@ -40,7 +42,7 @@ void Tiles:: update(string _mode, float mouseX, float mouseY) {
 
 void Tiles:: draw(float mouseX, float mouseY) {
 
-    ofSetColor(0, 60);
+    ofSetColor(color);
 
     ofPushMatrix();
     ofTranslate(gridPos.x, gridPos.y);
@@ -51,7 +53,7 @@ void Tiles:: draw(float mouseX, float mouseY) {
             diameter = diameter/500 * 40;
             
             ofTranslate(ofGetWidth()/8, 0, diameter * 10);
-            ofRect(0, 0, size/4, size/4);    //// also nice: ellipse(...)
+            ofRect(0, 0, size/2, size/2);    //// also nice: ellipse(...)
         
         }else if(mode == "fragments"){
             
