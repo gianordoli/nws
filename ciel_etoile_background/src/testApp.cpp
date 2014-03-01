@@ -14,13 +14,22 @@ void testApp::setup(){
     selectedTileMode = tileModes[0];
 
 //    setup for Tiles	
-	for (int gridY=0; gridY< ofGetWidth(); gridY +=10) {
-		for (int gridX=0; gridX< ofGetHeight(); gridX+=10) {
+	for (int gridY=0; gridY< ofGetWidth(); gridY +=20) {
+		for (int gridX=0; gridX< ofGetHeight(); gridX+=20) {
 			Tiles thisTile;			
 			thisTile.setup(selectedTileMode, gridX, gridY);
 			myTiles.push_back(thisTile);			
 		}
 	}
+    
+    gui = new ofxUISuperCanvas("Variables");
+    gui->addSpacer();
+        gui->addRadio("TILE MODES", tileModes, OFX_UI_ORIENTATION_HORIZONTAL);
+    gui->addSpacer();
+        gui->addToggle("FULLSCREEN", false);
+    gui->autoSizeToFitWidgets();
+    ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
+    gui->loadSettings("guiSettings.xml");
 }
 
 //--------------------------------------------------------------
@@ -57,6 +66,21 @@ void testApp::draw(){
 //		}
 //
 //	}
+}
+
+void testApp::guiEvent(ofxUIEventArgs &e){
+	string name = e.widget->getName();
+	int kind = e.widget->getKind();
+	
+    if(e.getName() == "FULLSCREEN"){
+        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
+        ofSetFullscreen(toggle->getValue());
+    }else if(name == "TILE MODES"){
+        ofxUIRadio *radio = (ofxUIRadio *) e.widget;
+        cout << radio->getName() << " value: " << radio->getValue() << " active name: " << radio->getActiveName() << endl;
+        selectedTileMode = radio->getActiveName();
+    }
+    
 }
 
 //--------------------------------------------------------------

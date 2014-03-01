@@ -3,6 +3,7 @@
 #include "ofMain.h"
  #include "Tiles.h"
 #include "Fragments.h"
+#include "ofxUI.h"
 
 class testApp : public ofBaseApp{
 
@@ -25,5 +26,7 @@ class testApp : public ofBaseApp{
 		vector <Fragments> myFragments;
         vector <string> tileModes;
         string selectedTileMode;
-	
+
+	ofxUISuperCanvas *gui;
+	void guiEvent(ofxUIEventArgs &e);
 };
