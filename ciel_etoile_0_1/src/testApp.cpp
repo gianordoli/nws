@@ -1,34 +1,17 @@
 #include "testApp.h"
 
-ofColor bgColor;
-
-vector<string> modes;
-string selectedMode;
-
-vector<string> shapes;
-string selectedShape;
-
-float expansion;
-float rotation;
-float shapeSize;
-float particleSize;
-float nVertices;
-
-
-vector<Particle> myParticles;
-
 //--------------------------------------------------------------
 void testApp::setup(){
 
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	ofEnableSmoothing();
+    ofSetBackgroundAuto(false);
 	
     bgColor.set(0, 180, 180, 20);
-    
-    ofSetBackgroundAuto(false);
 	ofBackground(bgColor);
     
+    /*----------------- PARTICLES -----------------*/
     modes.push_back("static");
     modes.push_back("fuzz");
     selectedMode = modes[0];
@@ -50,8 +33,10 @@ void testApp::setup(){
         thisParticle.init(NUM_PARTICLES, i, shapeSize, particleSize, selectedShape);
         myParticles.push_back(thisParticle);
     }
+    /*---------------------------------------------*/
 
     setGUI1();
+    setGUI2();
 
 }
 
@@ -128,6 +113,10 @@ void testApp::setGUI1(){
     gui1->autoSizeToFitWidgets();
     ofAddListener(gui1->newGUIEvent,this,&testApp::guiEvent);
     gui1->loadSettings("gui1Settings.xml");
+}
+
+void testApp::setGUI2(){
+    
 }
 
 void testApp::exit(){

@@ -24,6 +24,7 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
+    /*-------------------- GUI --------------------*/
 	void setGUI1();
 	void setGUI2();
 	
@@ -31,5 +32,23 @@ public:
 	ofxUISuperCanvas *gui2;
     
 	void guiEvent(ofxUIEventArgs &e);
+    /*---------------------------------------------*/
+
+
+    /*----------------- PARTICLES -----------------*/
+    vector<Particle> myParticles;
     
+    vector<string> modes;
+    string selectedMode;
+    
+    vector<string> shapes;
+    string selectedShape;
+    
+    ofColor bgColor;
+    float expansion;
+    float rotation;
+    float shapeSize;
+    float particleSize;
+    float nVertices;
+    /*---------------------------------------------*/
 };
