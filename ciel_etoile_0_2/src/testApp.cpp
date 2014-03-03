@@ -17,8 +17,11 @@ void testApp::setup(){
 
     /*------------------- SOUND -------------------*/
     soundStream.listDevices();
-  	soundStream.setDeviceID(3);
-    //Mindblowing FFT setup
+  	soundStream.setDeviceID(2);
+    
+    //soundstream setup
+    soundStream.setup(this, 0, 2, 44100, BUFFER_SIZE, 4);
+    
 	FFTanalyzer.setup(44100, BUFFER_SIZE/2, 2);
 	
 	FFTanalyzer.peakHoldTime = 15; // hold longer
@@ -57,12 +60,15 @@ void testApp::setup(){
 	tileModes.push_back("fragments");
     selectedTileMode = tileModes[1];
     
+    int nTiles = int(ofGetWidth()/40) *  int(ofGetHeight()/40);
+    int i = 0;
 	for (int gridY=0; gridY< ofGetHeight(); gridY += 40) {
 		for (int gridX=0; gridX< ofGetWidth(); gridX+= 40) {
 			Tiles thisTile;
-			thisTile.setup(selectedTileMode, gridX, gridY);
+			thisTile.setup(nTiles, i, selectedTileMode, gridX, gridY);
 			myTiles.push_back(thisTile);
             //            cout << gridX << endl;
+            i++;
 		}
 	}
     /*---------------------------------------------*/
@@ -84,6 +90,11 @@ void testApp::update(){
 	}
 	
 	FFTanalyzer.calculate(freq);
+    
+    for (int i = 0; i < (int)(BUFFER_SIZE/2 - 1); i++){
+        //            ofRect(200+(i*4),600,4,-freq[i]*10.0f);
+//        cout << freq[i] << endl;
+        }
 
     //BACKGROUND
 	for (int i=0; i < myTiles.size(); i++) {
@@ -117,7 +128,7 @@ void testApp::draw(){
 
     //BACKGROUND
     for (int i = 0; i < myTiles.size(); i++) {
-        myTiles[i].draw(mouseX, mouseY);
+        myTiles[i].draw(mouseX, mouseY, freq);
     }
     
     //PARTICLES
@@ -128,10 +139,12 @@ void testApp::draw(){
 }
 
 void testApp::audioIn(float * input, int bufferSize, int nChannels){
+//    cout << "sound in" << endl;
 	// samples are "interleaved"
 	for (int i = 0; i < bufferSize; i++){
 		left[i] = input[i*2];
 		right[i] = input[i*2+1];
+//        cout << right[i] << endl;
     }
 }
 

@@ -9,7 +9,7 @@ void testApp::setup(){
 	
 	//if you want to set a different device id
     //this is where you set OF to get SoundFlower as input. In my computer it's 2. Might be different in yours.
-	soundStream.setDeviceID(3);
+	soundStream.setDeviceID(2);
     
     //soundstream setup
     soundStream.setup(this, 0, 2, 44100, BUFFER_SIZE, 4);
@@ -49,6 +49,7 @@ void testApp::update(){
     
 	for (int i = 0; i < (int)(BUFFER_SIZE/2); i++){
 		freq[i] = magnitude[i];
+//         cout << freq[i] << endl;        
 	}
 	
 	FFTanalyzer.calculate(freq);
@@ -91,7 +92,7 @@ void testApp::draw(){
         }
         
     } else {
-        cout << "else";
+//        cout << "else";
         
         //doing just the averages
         ofSetHexColor(0xffffff);
@@ -164,10 +165,12 @@ void testApp::onSpacebrewMessage( Spacebrew::Message & m ){
 
 //--------------------------------------------------------------
 void testApp::audioIn(float * input, int bufferSize, int nChannels){
+    cout << "sound in" << endl;
 	// samples are "interleaved"
 	for (int i = 0; i < bufferSize; i++){
 		left[i] = input[i*2];
 		right[i] = input[i*2+1];
+//        cout << right[i] << endl;
     }
 }
 

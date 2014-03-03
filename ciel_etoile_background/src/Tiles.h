@@ -12,12 +12,15 @@
 class Tiles : public ofBaseApp{
 	
 public:
-	void setup(string _mode, int tempX, int tempY);
+	void setup(int _nTiles, int _i, string _mode, int tempX, int tempY);
 	void update(string _mode, float mouseX, float mouseY, float freq[]);
-	void draw (float mouseX, float mouseY);
+	void draw (float mouseX, float mouseY, float freq[]);
     void createTileVertices();
     void createFragmentVertices();
 	
+    int nTiles;
+    int i;
+    
     float size;         //tile size
     ofPoint gridPos;    //tile position
     

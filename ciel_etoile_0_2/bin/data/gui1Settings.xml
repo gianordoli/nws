@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ROTATION</Name>
-    <Value>0.000000000</Value>
+    <Value>360.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>PARTICLE SIZE</Name>
-    <Value>44.931034088</Value>
+    <Value>2.448275805</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
