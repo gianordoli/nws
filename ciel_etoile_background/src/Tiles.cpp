@@ -30,7 +30,7 @@ void Tiles:: setup(string _mode, int tempX, int tempY) {
 }
 //--------------------------------------------------------------
 
-void Tiles:: update(string _mode, float mouseX, float mouseY) {
+void Tiles:: update(string _mode, float mouseX, float mouseY, float freq[]) {
 
     mode = _mode;
     

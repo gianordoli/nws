@@ -1,0 +1,5 @@
+ofxXmlSettings
+ofxLibwebsockets
+ofxSpacebrew
+ofxSyphon
+ofxUI
