@@ -1,0 +1,264 @@
+// !$*UTF8*$!
+{
+	0FDDA5FA18BE48D400ECB160 /* Particle.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1474.98, 2205}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 524}";
+		};
+	};
+	0FDDA5FB18BE48D400ECB160 /* Particle.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1409.96, 693}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 609}";
+		};
+	};
+	CBFBC0AC18C4242D007DB79B /* ciel_etoile_0_1 */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = ciel_etoile_0_1;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	CBFBC0B718C42437007DB79B /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	CBFBC0B818C42437007DB79B /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	CBFBC0C418C424AF007DB79B /* Tiles.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {705.562, 693}}";
+			sepNavSelRange = "{424, 1}";
+			sepNavVisRange = "{0, 795}";
+		};
+	};
+	CBFBC0C518C424AF007DB79B /* Tiles.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {965.648, 2331}}";
+			sepNavSelRange = "{181, 0}";
+			sepNavVisRange = "{1224, 946}";
+		};
+	};
+	CBFBC12B18C428BB007DB79B /* testApp.h:59 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = E4B69E1F0A3A1BDC003C02F2 /* testApp.h */;
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 59;
+		modificationTime = 415508667.182759;
+		originalNumberOfMultipleMatches = 0;
+		state = 1;
+	};
+	CBFBC13118C4293F007DB79B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */;
+		name = "main.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 345;
+		vrLoc = 0;
+	};
+	CBFBC13218C4293F007DB79B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0FDDA5FB18BE48D400ECB160 /* Particle.h */;
+		name = "Particle.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 609;
+		vrLoc = 0;
+	};
+	CBFBC16118C429FC007DB79B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CBFBC0C418C424AF007DB79B /* Tiles.h */;
+		name = "Tiles.h: 19";
+		rLen = 1;
+		rLoc = 424;
+		rType = 0;
+		vrLen = 795;
+		vrLoc = 0;
+	};
+	CBFBC16218C429FC007DB79B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CBFBC0C518C424AF007DB79B /* Tiles.cpp */;
+		name = "Tiles.cpp: 12";
+		rLen = 0;
+		rLoc = 181;
+		rType = 0;
+		vrLen = 946;
+		vrLoc = 1224;
+	};
+	CBFBC19A18C42CFA007DB79B /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Applications/of_v0.8.0_osx_release/apps/NWS-local/ciel_etoile_0_1_1/openFrameworks-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	CBFBC19B18C42CFA007DB79B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E4B69E1F0A3A1BDC003C02F2 /* testApp.h */;
+		name = "testApp.h: 64";
+		rLen = 0;
+		rLoc = 1472;
+		rType = 0;
+		vrLen = 579;
+		vrLoc = 898;
+	};
+	CBFBC19C18C42CFA007DB79B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0FDDA5FA18BE48D400ECB160 /* Particle.cpp */;
+		name = "Particle.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 524;
+		vrLoc = 0;
+	};
+	CBFBC19D18C42CFA007DB79B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */;
+		name = "testApp.cpp: 15";
+		rLen = 0;
+		rLoc = 353;
+		rType = 0;
+		vrLen = 685;
+		vrLoc = 21;
+	};
+	CBFBC1AC18C4343F007DB79B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */;
+		name = "testApp.cpp: 18";
+		rLen = 0;
+		rLoc = 392;
+		rType = 0;
+		vrLen = 684;
+		vrLoc = 158;
+	};
+	E4B69B4C0A3A1720003C02F2 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = CBFBC0AC18C4242D007DB79B /* ciel_etoile_0_1 */;
+		activeTarget = E4B69B5A0A3A1756003C02F2 /* ciel_etoile_0_1 */;
+		addToTargets = (
+			E4B69B5A0A3A1756003C02F2 /* ciel_etoile_0_1 */,
+		);
+		breakpoints = (
+			CBFBC12B18C428BB007DB79B /* testApp.h:59 */,
+		);
+		codeSenseManager = CBFBC0B818C42437007DB79B /* Code sense */;
+		executables = (
+			CBFBC0AC18C4242D007DB79B /* ciel_etoile_0_1 */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					479,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 415507763;
+			PBXWorkspaceStateSaveDate = 415507763;
+		};
+		perUserProjectItems = {
+			CBFBC13118C4293F007DB79B /* PBXTextBookmark */ = CBFBC13118C4293F007DB79B /* PBXTextBookmark */;
+			CBFBC13218C4293F007DB79B /* PBXTextBookmark */ = CBFBC13218C4293F007DB79B /* PBXTextBookmark */;
+			CBFBC16118C429FC007DB79B /* PBXTextBookmark */ = CBFBC16118C429FC007DB79B /* PBXTextBookmark */;
+			CBFBC16218C429FC007DB79B /* PBXTextBookmark */ = CBFBC16218C429FC007DB79B /* PBXTextBookmark */;
+			CBFBC19A18C42CFA007DB79B /* PlistBookmark */ = CBFBC19A18C42CFA007DB79B /* PlistBookmark */;
+			CBFBC19B18C42CFA007DB79B /* PBXTextBookmark */ = CBFBC19B18C42CFA007DB79B /* PBXTextBookmark */;
+			CBFBC19C18C42CFA007DB79B /* PBXTextBookmark */ = CBFBC19C18C42CFA007DB79B /* PBXTextBookmark */;
+			CBFBC19D18C42CFA007DB79B /* PBXTextBookmark */ = CBFBC19D18C42CFA007DB79B /* PBXTextBookmark */;
+			CBFBC1AC18C4343F007DB79B /* PBXTextBookmark */ = CBFBC1AC18C4343F007DB79B /* PBXTextBookmark */;
+		};
+		sourceControlManager = CBFBC0B718C42437007DB79B /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	E4B69B5A0A3A1756003C02F2 /* ciel_etoile_0_1 */ = {
+		activeExec = 0;
+		executables = (
+			CBFBC0AC18C4242D007DB79B /* ciel_etoile_0_1 */,
+		);
+	};
+	E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {889.79, 580}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 345}";
+		};
+	};
+	E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {705.562, 5334}}";
+			sepNavSelRange = "{355, 0}";
+			sepNavVisRange = "{308, 189}";
+		};
+	};
+	E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {657, 1407}}";
+			sepNavSelRange = "{1472, 0}";
+			sepNavVisRange = "{898, 579}";
+		};
+	};
+}
