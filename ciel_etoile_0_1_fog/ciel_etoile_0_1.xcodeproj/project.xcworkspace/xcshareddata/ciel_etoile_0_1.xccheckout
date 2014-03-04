@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>48317018-409E-416A-A83A-5FFEBEBE3EBF</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ciel_etoile_0_1</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>69F25EDD-A33C-4030-82BC-3B5E82139E9A</key>
+		<string>https://github.com/gianordoli/nws.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ciel_etoile_0_1/ciel_etoile_0_1.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>69F25EDD-A33C-4030-82BC-3B5E82139E9A</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/gianordoli/nws.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>69F25EDD-A33C-4030-82BC-3B5E82139E9A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>69F25EDD-A33C-4030-82BC-3B5E82139E9A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>nws</string>
+		</dict>
+	</array>
+</dict>
+</plist>
