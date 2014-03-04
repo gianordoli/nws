@@ -30,6 +30,11 @@ void Tiles:: setup(int _nTiles, int _i, string _mode, int tempX, int tempY) {
 //    for(int i = 0; i < currVertices.size(); i++){
 //        cout << tileVertices[i].x << endl;
 //    }
+    
+    expansion = 0;
+    dir = 0;
+    speed = 0.01;
+    threshold = 2;
 }
 //--------------------------------------------------------------
 
@@ -37,23 +42,38 @@ void Tiles:: update(string _mode, float mouseX, float mouseY, float freq[]) {
 
     mode = _mode;
     
-    //Updating the vertices position based on mouseX
-    float expansion = ofMap(mouseX, 0, ofGetWidth(), 0, 1);
-    for(int i = 0; i < currVertices.size(); i++){
-//        currVertices[i].x = ofLerp(tileVertices[i].x, fragmentVertices[i].x, expansion);
-//        currVertices[i].y = ofLerp(tileVertices[i].y, fragmentVertices[i].y, expansion);
-        
-        int index = ofMap(i, 0, nTiles, 0, 256);
-        cout << abs(freq[index])*2 << endl;
-        currVertices[i].x = ofLerp(tileVertices[i].x, fragmentVertices[i].x, abs(freq[index])/100);
-        currVertices[i].y = ofLerp(tileVertices[i].y, fragmentVertices[i].y, abs(freq[index])/100);
-        
+    //Calculate index to use based on Tile index
+    int index = ofMap(i, nTiles, 0, 0, 256);
+//    cout << freq[index] << endl;
+    
+    //Change direction according to frequency
+    if(freq[index] > threshold){
+        dir = abs(freq[index])*speed;
+    }else{
+        dir -= speed;
     }
+    dir = ofClamp(dir, -10, 10);
+
+    expansion += dir;
+    expansion = ofClamp(expansion, 0, 10);
+
+
+    if(mode == "3D"){
+        
+    }else if(mode == "fragments"){
+        //Updating the vertices position
+        for(int i = 0; i < currVertices.size(); i++){
+            currVertices[i].x = ofLerp(tileVertices[i].x, fragmentVertices[i].x, expansion);
+            currVertices[i].y = ofLerp(tileVertices[i].y, fragmentVertices[i].y, expansion);
+        }
+    }
+    
+
 }
 
 //--------------------------------------------------------------
 
-void Tiles:: draw(float mouseX, float mouseY, float freq[]) {
+void Tiles:: draw(float mouseX, float mouseY) {
 
     ofSetColor(color);
 
@@ -65,8 +85,8 @@ void Tiles:: draw(float mouseX, float mouseY, float freq[]) {
 //            float dist = ofDist(mouseX, mouseY, gridPos.x, gridPos.y);
 //            float zOffset = ofMap(dist, -ofGetWidth()/4, ofGetWidth()/4, 0, size*10, true);
 //            ofTranslate(0, 0, zOffset);
-            int index = ofMap(i, 0, nTiles, 0, 256);
-            ofTranslate(0, 0, freq[index]*20.0f);
+//            int index = ofMap(i, 0, nTiles, 0, 256);
+            ofTranslate(0, 0, expansion*20.0f);
 //            cout << freq[index] << endl;
             ofRect(0, 0, size, size);
 //            freq[i]*10.0f

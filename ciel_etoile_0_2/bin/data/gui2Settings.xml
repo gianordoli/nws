@@ -8,10 +8,10 @@
 <Widget>
     <Kind>2</Kind>
     <Name>3D</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>fragments</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>

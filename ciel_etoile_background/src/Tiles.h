@@ -14,7 +14,7 @@ class Tiles : public ofBaseApp{
 public:
 	void setup(int _nTiles, int _i, string _mode, int tempX, int tempY);
 	void update(string _mode, float mouseX, float mouseY, float freq[]);
-	void draw (float mouseX, float mouseY, float freq[]);
+	void draw (float mouseX, float mouseY);
     void createTileVertices();
     void createFragmentVertices();
 	
@@ -33,5 +33,11 @@ public:
     string mode;
     
     ofColor color;
+    
+    float expansion;    /*This is gonna control the animation for all modes
+                          it will be updated based on the frequency array */
+    float dir;          //Expansion direction
+    float speed;        //Expansion speed
+    float threshold;    //Minimum sound input to change expansion
 };
 

@@ -128,7 +128,7 @@ void testApp::draw(){
 
     //BACKGROUND
     for (int i = 0; i < myTiles.size(); i++) {
-        myTiles[i].draw(mouseX, mouseY, freq);
+        myTiles[i].draw(mouseX, mouseY);
     }
     
     //PARTICLES
