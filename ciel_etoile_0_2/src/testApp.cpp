@@ -63,8 +63,8 @@ void testApp::setup(){
     
     int nTiles = int(ofGetWidth()/40) *  int(ofGetHeight()/40);
     int i = 0;
-	for (int gridY=0; gridY< ofGetHeight(); gridY += 40) {
-		for (int gridX=0; gridX< ofGetWidth(); gridX+= 40) {
+	for (int gridY=0; gridY <= ofGetHeight(); gridY += 40) {
+		for (int gridX=0; gridX <= ofGetWidth(); gridX+= 40) {
 			Tiles thisTile;
 			thisTile.setup(nTiles, i, selectedTileMode, gridX, gridY);
 			myTiles.push_back(thisTile);
@@ -99,7 +99,7 @@ void testApp::update(){
 
     //BACKGROUND
 	for (int i=0; i < myTiles.size(); i++) {
-		myTiles[i].update(selectedTileMode, mouseX, mouseY, freq);
+		myTiles[i].update(selectedTileMode, mouseX, mouseY, freq, threshold);
 	}
     
     // PARTICLES
@@ -195,6 +195,10 @@ void testApp::guiEvent(ofxUIEventArgs &e){
         ofxUIRadio *radio = (ofxUIRadio *) e.widget;
         cout << radio->getName() << " value: " << radio->getValue() << " active name: " << radio->getActiveName() << endl;
         selectedTileMode = radio->getActiveName();
+        
+    }else if(name == "THRESHOLD"){
+        ofxUISlider *slider = (ofxUISlider *) e.widget;
+        threshold = slider->getScaledValue();
     }
 }
 
@@ -225,6 +229,8 @@ void testApp::setGUI2(){
     gui2 = new ofxUISuperCanvas("BACKGROUND");
     gui2->addSpacer();
     gui2->addRadio("TILE MODES", tileModes, OFX_UI_ORIENTATION_HORIZONTAL);
+    gui2->addSpacer();
+    gui2->addSlider("THRESHOLD", 0, 4, threshold);
     gui2->autoSizeToFitWidgets();
     ofAddListener(gui2->newGUIEvent,this,&testApp::guiEvent);
     gui2->loadSettings("gui2Settings.xml");

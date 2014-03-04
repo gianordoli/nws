@@ -83,6 +83,7 @@ public:
     vector <Tiles> myTiles;
     vector <string> tileModes;
     string selectedTileMode;
+    float threshold;
     /*---------------------------------------------*/
     
 };

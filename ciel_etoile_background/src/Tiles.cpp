@@ -34,13 +34,14 @@ void Tiles:: setup(int _nTiles, int _i, string _mode, int tempX, int tempY) {
     expansion = 0;
     dir = 0;
     speed = 0.01;
-    threshold = 2;
+    threshold = 0;
 }
 //--------------------------------------------------------------
 
-void Tiles:: update(string _mode, float mouseX, float mouseY, float freq[]) {
+void Tiles:: update(string _mode, float mouseX, float mouseY, float freq[], float _threshold) {
 
     mode = _mode;
+    threshold = _threshold;
     
     //Calculate index to use based on Tile index
 //    int index = ofMap(i, nTiles, 0, 0, 256);
@@ -56,8 +57,10 @@ void Tiles:: update(string _mode, float mouseX, float mouseY, float freq[]) {
     dir = ofClamp(dir, -10, 10);
 
     expansion += dir;
-    expansion = ofClamp(expansion, 0, 10);
-
+    expansion = ofClamp(expansion, 0, 5);
+    if(expansion >= 5){
+        dir = - 2*speed;
+    }
 
     if(mode == "3D"){
         
