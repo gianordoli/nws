@@ -43,14 +43,15 @@ void Tiles:: update(string _mode, float mouseX, float mouseY, float freq[]) {
     mode = _mode;
     
     //Calculate index to use based on Tile index
-    int index = ofMap(i, nTiles, 0, 0, 256);
+//    int index = ofMap(i, nTiles, 0, 0, 256);
+    int index = ofMap(i, nTiles, 0, 0, 128);
 //    cout << freq[index] << endl;
     
     //Change direction according to frequency
     if(freq[index] > threshold){
         dir = abs(freq[index])*speed;
     }else{
-        dir -= speed;
+        dir = - 2*speed;
     }
     dir = ofClamp(dir, -10, 10);
 
@@ -66,6 +67,8 @@ void Tiles:: update(string _mode, float mouseX, float mouseY, float freq[]) {
             currVertices[i].x = ofLerp(tileVertices[i].x, fragmentVertices[i].x, expansion);
             currVertices[i].y = ofLerp(tileVertices[i].y, fragmentVertices[i].y, expansion);
         }
+    }else if(mode == "rotation"){
+    
     }
     
 
@@ -82,14 +85,8 @@ void Tiles:: draw(float mouseX, float mouseY) {
     
         if(mode == "3D"){
 
-//            float dist = ofDist(mouseX, mouseY, gridPos.x, gridPos.y);
-//            float zOffset = ofMap(dist, -ofGetWidth()/4, ofGetWidth()/4, 0, size*10, true);
-//            ofTranslate(0, 0, zOffset);
-//            int index = ofMap(i, 0, nTiles, 0, 256);
             ofTranslate(0, 0, expansion*20.0f);
-//            cout << freq[index] << endl;
             ofRect(0, 0, size, size);
-//            freq[i]*10.0f
         
         }else if(mode == "fragments"){
             
@@ -98,6 +95,10 @@ void Tiles:: draw(float mouseX, float mouseY) {
                 ofVertex(currVertices[i]);
             }
             ofEndShape(true);
+        }else if(mode == "rotation"){
+//            ofRotate(expansion);
+            ofRotateY(expansion*30);
+            ofRect(-size/2, 0, size, size);
         }
     ofPopMatrix();
 

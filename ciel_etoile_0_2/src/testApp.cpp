@@ -58,6 +58,7 @@ void testApp::setup(){
     /*---------------- BACKGROUND -----------------*/
 	tileModes.push_back("3D");
 	tileModes.push_back("fragments");
+	tileModes.push_back("rotation");    
     selectedTileMode = tileModes[1];
     
     int nTiles = int(ofGetWidth()/40) *  int(ofGetHeight()/40);
