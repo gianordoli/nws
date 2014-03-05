@@ -39,7 +39,7 @@ void testApp::setup(){
     /*---------------------------------------------*/
     
     /*-------------------- FOG --------------------*/
-    fogMovie.loadMovie("movies/fog.mov");
+    fogMovie.loadMovie("movies/fog2.mov");
 	fogMovie.play();
 //    fogMovie.setLoopState();
     /*---------------------------------------------*/
