@@ -43,7 +43,7 @@ void Particle::update(Boolean GUImode, string _mode, string _shape, float _expan
         size = ofMap(accel[accel.size()-1].y, 100, 360, 1, 50);
         shapeSize = ofMap(accel[accel.size()-1].x, 100, 360, 0, ofGetHeight()/2 - 100);
 //        rotation = ofMap(accel[accel.size()-1].z, 100, 180, 0, 360);
-        rotation = accel[accel.size()-1].z; 
+        rotation = accel[accel.size()-1].z;
     }
     
     float angle = ofDegToRad(360/float(nParticles));
