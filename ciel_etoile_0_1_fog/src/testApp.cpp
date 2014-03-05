@@ -6,7 +6,7 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	ofEnableSmoothing();
-    ofSetBackgroundAuto(false);
+//    ofSetBackgroundAuto(false);
     ofToggleFullscreen();
 
 //    bgColor.set(0, 180, 180);	
@@ -87,7 +87,6 @@ void testApp::draw(){
    
     ofSetColor(bgColor);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
-
 
 	
     //BACKGROUND

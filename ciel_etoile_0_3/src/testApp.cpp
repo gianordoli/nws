@@ -11,6 +11,7 @@ void testApp::setup(){
     
     //    bgColor.set(0, 180, 180);
     //    bgColor.set(0, 180, 180, 20);
+//    bgColor.set(0, 20);
     bgColor.set(0, 20);
 	ofBackground(bgColor);
     //	ofBackground(255);
@@ -35,6 +36,12 @@ void testApp::setup(){
 	FFTanalyzer.peakDecayRate = 0.95f; // decay slower
 	FFTanalyzer.linearEQIntercept = 0.9f; // reduced gain at lowest frequency
 	FFTanalyzer.linearEQSlope = 0.01f; // increasing gain at higher frequencies
+    /*---------------------------------------------*/
+    
+    /*-------------------- FOG --------------------*/
+    fogMovie.loadMovie("movies/fog.mov");
+	fogMovie.play();
+//    fogMovie.setLoopState();
     /*---------------------------------------------*/
     
     /*----------------- PARTICLES -----------------*/
@@ -91,6 +98,8 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
+    fogMovie.update();
+    
     /*------------------- WI-FLY ------------------*/
     updateConnection();
     /*---------------------------------------------*/
@@ -115,9 +124,8 @@ void testApp::update(){
     // PARTICLES
     for(int i=0; i < myParticles.size(); i++){
         
-        myParticles[i].update(particleGUImode, selectedMode, selectedShape, expansion, shapeSize, nVertices, particleSize, rotation, accel);
+        myParticles[i].update(particleGUImode, selectedMode, selectedShape, expansion, shapeSize, nVertices, particleSize, rotation, accel, magne);
     }
-    
     
 }
 
@@ -126,22 +134,25 @@ void testApp::draw(){
     
     ofSetColor(bgColor);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
-    
-    //bDrawAverages toggle 2 two different modes: actual FFT (512 values), or averages.
-    if (!bDrawAverages) {
-//        cout << "bDrawAverages";
-//        ofSetHexColor(0xffffff);
-//        for (int i = 0; i < (int)(BUFFER_SIZE/2 - 1); i++){
-//            ofRect(200+(i*4),600,4,-freq[i]*10.0f);
-//        }
-    }else{
-        
-    }
-    
+//
+//    //bDrawAverages toggle 2 two different modes: actual FFT (512 values), or averages.
+//    if (!bDrawAverages) {
+////        cout << "bDrawAverages";
+////        ofSetHexColor(0xffffff);
+////        for (int i = 0; i < (int)(BUFFER_SIZE/2 - 1); i++){
+////            ofRect(200+(i*4),600,4,-freq[i]*10.0f);
+////        }
+//    }else{
+//        
+//    }
+//
     //BACKGROUND
     for (int i = 0; i < myTiles.size(); i++) {
         myTiles[i].draw(mouseX, mouseY);
     }
+    
+    ofSetColor(255, 100);
+    fogMovie.draw(0, 0, ofGetWidth(), ofGetHeight());
     
     //PARTICLES
     for(int i=0; i < myParticles.size(); i++){

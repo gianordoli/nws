@@ -13,9 +13,11 @@ class Particle{
 public:
     //functions
     void init(int _nParticles, int _i, float _shapeSize, float _size, string _shape);
-    void update(Boolean GUImode, string _mode, string _shape, float _expansion, float _shapeSize, float _nVertices, float _size, float _rotation, vector<ofVec3f>& accel);
+    void update(Boolean GUImode, string _mode, string _shape, float _expansion, float _shapeSize, float _nVertices, float _size, float _rotation, vector<ofVec3f>& accel, vector<ofVec3f>& magne);
 
     void draw();
+    
+    ofPoint average(vector<ofVec3f> myVector);
 
     void createRandomPos();
     void createShapePos();

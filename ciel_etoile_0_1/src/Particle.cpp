@@ -26,7 +26,7 @@ void Particle::init(int _nParticles, int _i, float _shapeSize, float _size, stri
     pos = randomPos;
 }
 
-void Particle::update(Boolean GUImode, string _mode, string _shape, float _expansion, float _shapeSize, float _nVertices, float _size, float _rotation, vector<ofVec3f>& accel){
+void Particle::update(Boolean GUImode, string _mode, string _shape, float _expansion, float _shapeSize, float _nVertices, float _size, float _rotation, vector<ofVec3f>& accel, vector<ofVec3f>& magne){
 //    cout << mode;
     float expansion = _expansion;
 
@@ -40,10 +40,13 @@ void Particle::update(Boolean GUImode, string _mode, string _shape, float _expan
         shapeSize = _shapeSize;
         rotation = _rotation;
     }else{
-        size = ofMap(accel[accel.size()-1].y, 100, 360, 1, 50);
-        shapeSize = ofMap(accel[accel.size()-1].x, 100, 360, 0, ofGetHeight()/2 - 100);
-//        rotation = ofMap(accel[accel.size()-1].z, 100, 180, 0, 360);
-        rotation = accel[accel.size()-1].z;
+//        size = ofMap(accel[accel.size()-1].y, 100, 360, 1, 50);
+//        shapeSize = ofMap(accel[accel.size()-1].x, 100, 360, 0, ofGetHeight()/2 - 100);
+//        rotation = accel[accel.size()-1].z;
+        
+        size = ofMap(average(magne).y, 0, 255, 1, 50);
+        shapeSize = ofMap(average(magne).x, 0, 255, 0, ofGetHeight()/2 - 100);
+        rotation = ofMap(average(magne).z, 0, 255, 0, 0, 360);
     }
     
     float angle = ofDegToRad(360/float(nParticles));
@@ -64,6 +67,19 @@ void Particle::draw(){
         ofRotate(rotation);
             ofCircle(pos.x, pos.y, size, size);
     ofPopMatrix();
+}
+
+ofPoint Particle::average(vector<ofVec3f> myVector){
+    ofPoint sum;
+    for (int i = 0; i < myVector.size(); i++) {
+        sum.x += myVector[i].x;
+        sum.y += myVector[i].y;
+        sum.z += myVector[i].z;
+    }
+    sum.x /= myVector.size();
+    sum.y /= myVector.size();
+    sum.z /= myVector.size();
+    return sum;
 }
 
 void Particle::createRandomPos(){
