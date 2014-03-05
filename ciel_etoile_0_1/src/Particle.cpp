@@ -26,14 +26,25 @@ void Particle::init(int _nParticles, int _i, float _shapeSize, float _size, stri
     pos = randomPos;
 }
 
-void Particle::update(int _nParticles, float _expansion, float _shapeSize, float _nVertices, float _size, string _shape, string _mode){
+void Particle::update(Boolean GUImode, string _mode, string _shape, float _expansion, float _shapeSize, float _nVertices, float _size, float _rotation, vector<ofVec3f>& accel){
 //    cout << mode;
     float expansion = _expansion;
-    shapeSize = _shapeSize;
-    size = _size;
+
+
     nVertices = _nVertices;
     shape = _shape;
     string mode = _mode;
+    
+    if(GUImode){
+        size = _size;
+        shapeSize = _shapeSize;
+        rotation = _rotation;
+    }else{
+        size = ofMap(accel[accel.size()-1].y, 100, 360, 1, 50);
+        shapeSize = ofMap(accel[accel.size()-1].x, 100, 360, 0, ofGetHeight()/2 - 100);
+//        rotation = ofMap(accel[accel.size()-1].z, 100, 180, 0, 360);
+        rotation = accel[accel.size()-1].z; 
+    }
     
     float angle = ofDegToRad(360/float(nParticles));
     
@@ -46,8 +57,7 @@ void Particle::update(int _nParticles, float _expansion, float _shapeSize, float
     pos.y = ofLerp(randomPos.y, shapePos.y, expansion);
 }
 
-void Particle::draw(float _rotation){
-    float rotation = _rotation;
+void Particle::draw(){
     ofSetColor(color);
     ofPushMatrix();
         ofTranslate(centerPos.x, centerPos.y);

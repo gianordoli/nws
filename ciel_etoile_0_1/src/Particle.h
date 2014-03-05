@@ -13,8 +13,9 @@ class Particle{
 public:
     //functions
     void init(int _nParticles, int _i, float _shapeSize, float _size, string _shape);
-    void update(int _nParticles, float _expansion, float _shapeSize, float _nVertices, float _size, string _shape, string _mode);
-    void draw(float _rotation);
+    void update(Boolean GUImode, string _mode, string _shape, float _expansion, float _shapeSize, float _nVertices, float _size, float _rotation, vector<ofVec3f>& accel);
+
+    void draw();
 
     void createRandomPos();
     void createShapePos();
@@ -31,4 +32,5 @@ public:
     float shapeSize;
     string shape;
     float nVertices;
+    float rotation;
 };

@@ -54,6 +54,8 @@ void testApp::setup(){
     particleSize = 1;
     nVertices = 1;
     
+    particleGUImode = true;
+    
     for(int i=0; i < NUM_PARTICLES; i++){
         Particle thisParticle;
         thisParticle.init(NUM_PARTICLES, i, shapeSize, particleSize, selectedShape);
@@ -112,8 +114,11 @@ void testApp::update(){
     
     // PARTICLES
     for(int i=0; i < myParticles.size(); i++){
-        myParticles[i].update(myParticles.size(), expansion, shapeSize, nVertices, particleSize, selectedShape, selectedMode);
+        
+        myParticles[i].update(particleGUImode, selectedMode, selectedShape, expansion, shapeSize, nVertices, particleSize, rotation, accel);
     }
+    
+    
 }
 
 //--------------------------------------------------------------
@@ -124,13 +129,11 @@ void testApp::draw(){
     
     //bDrawAverages toggle 2 two different modes: actual FFT (512 values), or averages.
     if (!bDrawAverages) {
-        //        cout << "bDrawAverages";
-        
-        //
-        //        ofSetHexColor(0xffffff);
-        //        for (int i = 0; i < (int)(BUFFER_SIZE/2 - 1); i++){
-        //            ofRect(200+(i*4),600,4,-freq[i]*10.0f);
-        //        }
+//        cout << "bDrawAverages";
+//        ofSetHexColor(0xffffff);
+//        for (int i = 0; i < (int)(BUFFER_SIZE/2 - 1); i++){
+//            ofRect(200+(i*4),600,4,-freq[i]*10.0f);
+//        }
     }else{
         
     }
@@ -142,7 +145,7 @@ void testApp::draw(){
     
     //PARTICLES
     for(int i=0; i < myParticles.size(); i++){
-        myParticles[i].draw(rotation);
+        myParticles[i].draw();
     }
     
 }
@@ -205,6 +208,10 @@ void testApp::guiEvent(ofxUIEventArgs &e){
         
         
         /*----------------- PARTICLES -----------------*/
+	}else if(name == "PARTICLE GUI MODE"){
+        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
+        particleGUImode = toggle->getValue();
+        
 	}else if(name == "EXPANSION"){
 		ofxUISlider *slider = (ofxUISlider *) e.widget;
 		expansion = slider->getScaledValue();
@@ -249,23 +256,36 @@ void testApp::guiEvent(ofxUIEventArgs &e){
 }
 
 void testApp::setGUI1(){
+    
+    
     gui1 = new ofxUISuperCanvas("PARTICLES");
     gui1->addSpacer();
-    gui1->addSlider("EXPANSION", 0, 1, expansion);
+    
+    gui1->addToggle("PARTICLE GUI MODE", particleGUImode);
     gui1->addSpacer();
-    gui1->addSlider("ROTATION", 0, 360, rotation);
-    gui1->addSpacer();
-    gui1->addSlider("SHAPE SIZE", 0, ofGetHeight()/2 - 100, shapeSize);
-    gui1->addSpacer();
-    gui1->addSlider("VERTICES", 1, 6.78, nVertices);
-    gui1->addSpacer();
-    gui1->addSlider("PARTICLE SIZE", 1, 50, particleSize);
-    gui1->addSpacer();
-    gui1->addRadio("SHAPES", shapes, OFX_UI_ORIENTATION_HORIZONTAL);
-    gui1->addSpacer();
+    
     gui1->addRadio("MODES", modes, OFX_UI_ORIENTATION_HORIZONTAL);
     gui1->addSpacer();
-    gui1->addToggle("FULLSCREEN", false);
+
+    gui1->addRadio("SHAPES", shapes, OFX_UI_ORIENTATION_HORIZONTAL);
+    gui1->addSpacer();
+
+    gui1->addSlider("EXPANSION", 0, 1, expansion);
+    gui1->addSpacer();
+
+    gui1->addSlider("SHAPE SIZE", 0, ofGetHeight()/2 - 100, shapeSize);
+    gui1->addSpacer();
+
+    gui1->addSlider("VERTICES", 1, 6.78, nVertices);
+    gui1->addSpacer();
+
+    gui1->addSlider("PARTICLE SIZE", 1, 50, particleSize);
+    gui1->addSpacer();
+    
+    gui1->addSlider("ROTATION", 0, 360, rotation);
+    gui1->addSpacer();
+
+    gui1->addToggle("FULLSCREEN", TRUE);
     gui1->autoSizeToFitWidgets();
     ofAddListener(gui1->newGUIEvent,this,&testApp::guiEvent);
     gui1->loadSettings("gui1Settings.xml");

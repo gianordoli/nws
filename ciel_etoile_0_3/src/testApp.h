@@ -89,6 +89,8 @@ public:
     float shapeSize;
     float particleSize;
     float nVertices;
+    
+    Boolean particleGUImode;    //Switch between GUI and wrist band, for controlling particles
     /*---------------------------------------------*/
     
     
