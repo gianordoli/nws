@@ -21,6 +21,7 @@ void testApp::setup(){
 	udpConnection.Create();
 	udpConnection.Bind(11999);
 	udpConnection.SetNonBlocking(true);
+    mySensorID = 1;
     /*---------------------------------------------*/
     
     /*------------------- SOUND -------------------*/
@@ -183,8 +184,12 @@ void testApp::updateConnection(){
                 //cout << "datapoints size: "<<dataPoints.size() << endl;
                 if (dataPoints.size() == 7) {
                     dataID = atof(dataPoints[0].c_str());
-                    accel.push_back(ofVec3f(atof(dataPoints[1].c_str()),atof(dataPoints[2].c_str()),atof(dataPoints[3].c_str())));
-                    magne.push_back(ofVec3f(atof(dataPoints[4].c_str()),atof(dataPoints[5].c_str()),atof(dataPoints[6].c_str())));
+                    if(dataID == mySensorID){
+                        accel.push_back(ofVec3f(atof(dataPoints[1].c_str()),atof(dataPoints[2].c_str()),atof(dataPoints[3].c_str())));
+                        magne.push_back(ofVec3f(atof(dataPoints[4].c_str()),atof(dataPoints[5].c_str()),atof(dataPoints[6].c_str())));
+                    }else{
+                        cout << "This is not my ID!!!" << endl;
+                    }
                     
                     
                     int readingNum = accel.size();

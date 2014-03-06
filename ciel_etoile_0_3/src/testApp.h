@@ -50,6 +50,7 @@ public:
     vector<ofVec3f> accel;
     vector<ofVec3f> magne;
     void updateConnection();
+    int mySensorID;
     /*---------------------------------------------*/
 
     
