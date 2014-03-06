@@ -39,5 +39,6 @@ public:
     float dir;          //Expansion direction
     float speed;        //Expansion speed
     float threshold;    //Minimum sound input to change expansion
+    
 };
 

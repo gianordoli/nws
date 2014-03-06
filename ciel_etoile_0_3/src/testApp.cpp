@@ -7,7 +7,7 @@ void testApp::setup(){
 	ofSetFrameRate(60);
 	ofEnableSmoothing();
     ofSetBackgroundAuto(false);
-//    ofToggleFullscreen();
+    ofToggleFullscreen();
     
 //    bgColor.set(0, 180, 180);
 //    bgColor.set(0, 180, 180, 20);
@@ -28,6 +28,14 @@ void testApp::setup(){
 	udpConnection.SetNonBlocking(true);
     mySensorID = 1;
     /*---------------------------------------------*/
+
+    /*-------------------- FOG --------------------*/
+    //    fogMovie.loadMovie("movies/fog.mov");
+    fogMovie.loadMovie("movies/smoke_duck.mp4");
+	fogMovie.play();
+    //    fogMovie.setLoopState();
+    videoAlpha = 100;
+    /*---------------------------------------------*/
     
     /*------------------- SOUND -------------------*/
     soundStream.listDevices();
@@ -44,12 +52,6 @@ void testApp::setup(){
 	FFTanalyzer.linearEQSlope = 0.01f; // increasing gain at higher frequencies
     /*---------------------------------------------*/
     
-    /*-------------------- FOG --------------------*/
-//    fogMovie.loadMovie("movies/fog.mov");
-    fogMovie.loadMovie("movies/smoke_duck.mp4");
-	fogMovie.play();
-//    fogMovie.setLoopState();
-    /*---------------------------------------------*/
     
     /*----------------- PARTICLES -----------------*/
     modes.push_back("static");
@@ -105,7 +107,6 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
-    fogMovie.update();
     
     /*------------------- WI-FLY ------------------*/
     updateConnection();
@@ -117,16 +118,20 @@ void testApp::update(){
 	myfft.powerSpectrum(0,(int)BUFFER_SIZE/2, left,BUFFER_SIZE,&magnitude[0],&phase[0],&power[0],&avg_power);
 	for (int i = 0; i < (int)(BUFFER_SIZE/2); i++){
 		freq[i] = magnitude[i];
+        cout << freq[i] << endl;
 	}
 	FFTanalyzer.calculate(freq);
-    for (int i = 0; i < (int)(BUFFER_SIZE/2 - 1); i++){
-    }
-    /*---------------------------------------------*/    
+
+    /*---------------------------------------------*/
+
     
     //BACKGROUND
 	for (int i=0; i < myTiles.size(); i++) {
 		myTiles[i].update(selectedTileMode, mouseX, mouseY, freq, threshold);
 	}
+    
+    //VIDEO
+    fogMovie.update();
     
     // PARTICLES
     for(int i=0; i < myParticles.size(); i++){
@@ -141,24 +146,14 @@ void testApp::draw(){
     
     ofSetColor(bgColor);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
-//
-//    //bDrawAverages toggle 2 two different modes: actual FFT (512 values), or averages.
-//    if (!bDrawAverages) {
-////        cout << "bDrawAverages";
-////        ofSetHexColor(0xffffff);
-////        for (int i = 0; i < (int)(BUFFER_SIZE/2 - 1); i++){
-////            ofRect(200+(i*4),600,4,-freq[i]*10.0f);
-////        }
-//    }else{
-//        
-//    }
-//
+
     //BACKGROUND
     for (int i = 0; i < myTiles.size(); i++) {
         myTiles[i].draw(mouseX, mouseY);
     }
     
-    ofSetColor(255, 100);
+    //VIDEO
+    ofSetColor(255, videoAlpha);
     fogMovie.draw(0, 0, ofGetWidth(), ofGetHeight());
     
     //PARTICLES
@@ -200,10 +195,10 @@ void testApp::updateConnection(){
                     
                     
                     int readingNum = accel.size();
-                    cout << "total readings: "<< readingNum;
-                    cout << "\tid: "<< dataID; //WHICH UNIT IS THIS ONE
-                    cout << "\tAccel: " << accel[accel.size()-1].x << ", " << accel[accel.size()-1].y << ", " << accel[accel.size()-1].z;
-                    cout << "\t\tMagne: " << magne[accel.size()-1].x << ", " << magne[accel.size()-1].y << ", " << magne[accel.size()-1].z << endl;
+//                    cout << "total readings: "<< readingNum;
+//                    cout << "\tid: "<< dataID; //WHICH UNIT IS THIS ONE
+//                    cout << "\tAccel: " << accel[accel.size()-1].x << ", " << accel[accel.size()-1].y << ", " << accel[accel.size()-1].z;
+//                    cout << "\t\tMagne: " << magne[accel.size()-1].x << ", " << magne[accel.size()-1].y << ", " << magne[accel.size()-1].z << endl;
                     
                 } else cout << "WRONG NUMBER OF DATAPOINTS RECEIVED: " << dataPoints.size() <<endl;
             }
@@ -275,6 +270,10 @@ void testApp::guiEvent(ofxUIEventArgs &e){
     }else if(name == "THRESHOLD"){
         ofxUISlider *slider = (ofxUISlider *) e.widget;
         threshold = slider->getScaledValue();
+
+    }else if(name == "VIDEO"){
+        ofxUISlider *slider = (ofxUISlider *) e.widget;
+        videoAlpha = slider->getScaledValue();
     }
 }
 
@@ -309,6 +308,7 @@ void testApp::setGUI1(){
     gui1->addSpacer();
 
     gui1->addToggle("FULLSCREEN", TRUE);
+    
     gui1->autoSizeToFitWidgets();
     ofAddListener(gui1->newGUIEvent,this,&testApp::guiEvent);
     gui1->loadSettings("gui1Settings.xml");
@@ -317,9 +317,15 @@ void testApp::setGUI1(){
 void testApp::setGUI2(){
     gui2 = new ofxUISuperCanvas("BACKGROUND");
     gui2->addSpacer();
+    
     gui2->addRadio("TILE MODES", tileModes, OFX_UI_ORIENTATION_HORIZONTAL);
     gui2->addSpacer();
+    
     gui2->addSlider("THRESHOLD", 0, 4, threshold);
+    
+    gui2->addSlider("VIDEO", 0, 100, videoAlpha);
+    gui2->addSpacer();
+    
     gui2->autoSizeToFitWidgets();
     ofAddListener(gui2->newGUIEvent,this,&testApp::guiEvent);
     gui2->loadSettings("gui2Settings.xml");

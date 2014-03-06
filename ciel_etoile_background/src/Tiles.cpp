@@ -35,11 +35,12 @@ void Tiles:: setup(int _nTiles, int _i, string _mode, int tempX, int tempY) {
     dir = 0;
     speed = 0.01;
     threshold = 0;
+    
 }
 //--------------------------------------------------------------
 
-void Tiles:: update(string _mode, float mouseX, float mouseY, float freq[], float _threshold) {
-
+void Tiles:: update(string _mode, float mouseX, float mouseY, float freq[], float _threshold) { 
+    
     mode = _mode;
     threshold = _threshold;
     
@@ -104,7 +105,6 @@ void Tiles:: draw(float mouseX, float mouseY) {
             ofRect(-size/2, 0, size, size);
         }
     ofPopMatrix();
-
 }
 
 void Tiles::createTileVertices(){

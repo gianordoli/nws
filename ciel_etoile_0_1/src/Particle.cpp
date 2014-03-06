@@ -43,34 +43,20 @@ void Particle::update(Boolean GUImode, string _mode, string _shape, float _expan
     }else{
         if(accel.size() > 0){
 
-//        size = ofMap(accel[accel.size()-1].y, 100, 360, 1, 50);
-//        ofPoint accelAverage = average(accel);
-//        ofPoint magneAverage = average(magne);
-//
-//        shapeSize = ofMap(accelAverage.x, 100, 360, 0, ofGetHeight()/2 - 100);
-//        rotation = accelAverage.z;
-//        size = ofMap(accelAverage.y, 0, 255, 1, 50);
+        ofPoint diff = average(accel) - lastAverage;
+        diff.normalize();
+        
+            
+        shapeSize += diff.z * 10;
+        shapeSize = ofClamp(shapeSize, ofGetWidth()/20, ofGetWidth()/4);
+        
+        rotation += diff.y * 10;
+        rotation = ofClamp(rotation, 0, 360);
 
-//        ofPoint test = accel[accel.size() - 1];
-//        ofPoint test = average(accel);
-//        ofPoint test = accel[accel.size() - 1] - accel[accel.size() - 2];
-//        ofPoint test = accel[accel.size() - 1] - average(accel);
-        ofPoint test = average(accel) - lastAverage;
-        test.normalize();
-//        float motionAverage = (test.x +test.y + test.z)/3;
-//        motionAverage = (motionAverage > 0) ? (motionAverage) : (-motionAverage);
-//            ofClamp(motionAverage, 0, 1);
-//        cout << motionAverage << endl;
-//
-//        if(motionAverage < 0.2){
-//            motionAverage = -0.2;
-//        }
-//            cout << test.z;
+        size += diff.x * 10;
+        size = ofClamp(size, 1, 30);
             
-        shapeSize += test.z * 50;
-        shapeSize = ofClamp(shapeSize, ofGetWidth()/10, ofGetWidth()/3);
-            
-            lastAverage = average(accel);
+        lastAverage = average(accel);
 
 //        cout << "ACCEL x: " + ofToString(accelAverage.x) << " y: " + ofToString(accelAverage.y) << " z: " + ofToString(accelAverage.z) << endl;
 //

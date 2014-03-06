@@ -36,6 +36,12 @@ public:
     void gotMessage(ofMessage msg);
 
     
+    /*-------------------- FOG --------------------*/
+	ofVideoPlayer fogMovie;
+    float videoAlpha;
+    /*---------------------------------------------*/
+    
+    
     /*------------------ SYPHON ------------------*/
 	ofxSyphonServer syphon;
     /*--------------------------------------------*/
@@ -82,9 +88,6 @@ public:
     bool bDrawAverages;
     /*---------------------------------------------*/
     
-    /*-------------------- FOG --------------------*/
-	ofVideoPlayer fogMovie;    
-    /*---------------------------------------------*/
     
     /*----------------- PARTICLES -----------------*/
     vector<Particle> myParticles;
