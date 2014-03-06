@@ -12,6 +12,8 @@
 #include "Particle.h"
 #include "Tiles.h"
 
+#include "ofxSyphon.h"
+
 #define BUFFER_SIZE 512
 #define NUM_PARTICLES 256
 
@@ -32,6 +34,12 @@ public:
     void windowResized(int w, int h);
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
+
+    
+    /*------------------ SYPHON ------------------*/
+	ofxSyphonServer syphon;
+    /*--------------------------------------------*/
+    
     
     /*-------------------- GUI --------------------*/
 	void setGUI1();

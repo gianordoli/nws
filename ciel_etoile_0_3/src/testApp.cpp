@@ -15,6 +15,11 @@ void testApp::setup(){
     bgColor.set(0, 20);
 	ofBackground(bgColor);
     //	ofBackground(255);
+    
+    /*------------------ SYPHON ------------------*/
+	syphon.setName("ciel_etoile");
+    /*--------------------------------------------*/
+    
 
     /*------------------- WI-FLY ------------------*/
     //create the socket and bind to port 11999
@@ -160,6 +165,7 @@ void testApp::draw(){
         myParticles[i].draw();
     }
     
+	syphon.publishScreen();
 }
 
 void testApp::updateConnection(){
