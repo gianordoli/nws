@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1E6203B6-742F-45C0-9E94-D68489C2E416</string>
+	<key>IDESourceControlProjectName</key>
+	<string>wiflyTest</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BA5C8E9E-F961-461A-805C-8DF4F0FABBF8</key>
+		<string>https://github.com/namreta/Creative-Code-MidTerm.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>wiflyTest/wiflyTest.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BA5C8E9E-F961-461A-805C-8DF4F0FABBF8</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/namreta/Creative-Code-MidTerm.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BA5C8E9E-F961-461A-805C-8DF4F0FABBF8</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BA5C8E9E-F961-461A-805C-8DF4F0FABBF8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Creative-Code-MidTerm</string>
+		</dict>
+	</array>
+</dict>
+</plist>
