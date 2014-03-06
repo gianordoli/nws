@@ -18,6 +18,7 @@ public:
     void draw();
     
     ofPoint average(vector<ofVec3f> myVector);
+    ofPoint lastAverage;
 
     void createRandomPos();
     void createShapePos();

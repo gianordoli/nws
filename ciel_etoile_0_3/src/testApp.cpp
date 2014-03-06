@@ -45,7 +45,8 @@ void testApp::setup(){
     /*---------------------------------------------*/
     
     /*-------------------- FOG --------------------*/
-    fogMovie.loadMovie("movies/fog.mov");
+//    fogMovie.loadMovie("movies/fog.mov");
+    fogMovie.loadMovie("movies/smoke_duck.mp4");
 	fogMovie.play();
 //    fogMovie.setLoopState();
     /*---------------------------------------------*/

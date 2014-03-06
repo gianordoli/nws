@@ -15,7 +15,8 @@ void Particle::init(int _nParticles, int _i, float _shapeSize, float _size, stri
 //    color.set(255);
     color.set(0);
     size = _size;
-    shapeSize = _shapeSize;
+//    shapeSize = _shapeSize;
+    shapeSize = 100;
     shape = _shape;
     
     centerPos.x = ofGetWidth()/2;
@@ -40,13 +41,46 @@ void Particle::update(Boolean GUImode, string _mode, string _shape, float _expan
         shapeSize = _shapeSize;
         rotation = _rotation;
     }else{
+        if(accel.size() > 0){
+
 //        size = ofMap(accel[accel.size()-1].y, 100, 360, 1, 50);
-//        shapeSize = ofMap(accel[accel.size()-1].x, 100, 360, 0, ofGetHeight()/2 - 100);
-//        rotation = accel[accel.size()-1].z;
-        
-        size = ofMap(average(magne).y, 0, 255, 1, 50);
-        shapeSize = ofMap(average(magne).x, 0, 255, 0, ofGetHeight()/2 - 100);
-        rotation = ofMap(average(magne).z, 0, 255, 0, 0, 360);
+//        ofPoint accelAverage = average(accel);
+//        ofPoint magneAverage = average(magne);
+//
+//        shapeSize = ofMap(accelAverage.x, 100, 360, 0, ofGetHeight()/2 - 100);
+//        rotation = accelAverage.z;
+//        size = ofMap(accelAverage.y, 0, 255, 1, 50);
+
+//        ofPoint test = accel[accel.size() - 1];
+//        ofPoint test = average(accel);
+//        ofPoint test = accel[accel.size() - 1] - accel[accel.size() - 2];
+//        ofPoint test = accel[accel.size() - 1] - average(accel);
+        ofPoint test = average(accel) - lastAverage;
+        test.normalize();
+//        float motionAverage = (test.x +test.y + test.z)/3;
+//        motionAverage = (motionAverage > 0) ? (motionAverage) : (-motionAverage);
+//            ofClamp(motionAverage, 0, 1);
+//        cout << motionAverage << endl;
+//
+//        if(motionAverage < 0.2){
+//            motionAverage = -0.2;
+//        }
+//            cout << test.z;
+            
+        shapeSize += test.z * 50;
+        shapeSize = ofClamp(shapeSize, ofGetWidth()/10, ofGetWidth()/3);
+            
+            lastAverage = average(accel);
+
+//        cout << "ACCEL x: " + ofToString(accelAverage.x) << " y: " + ofToString(accelAverage.y) << " z: " + ofToString(accelAverage.z) << endl;
+//
+//        cout << "MAGNE x: " + ofToString(magneAverage.x) << " y: " + ofToString(magneAverage.y) << " z: " + ofToString(magneAverage.z) << endl;
+
+//        shapeSize = ofMap(average(magne).x, 0, 255, 0, ofGetHeight()/2 - 100);
+//        rotation = ofMap(average(magne).z, 0, 255, 0, 0, 360);
+            
+            
+        }
     }
     
     float angle = ofDegToRad(360/float(nParticles));
