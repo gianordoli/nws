@@ -9,8 +9,8 @@ void testApp::setup(){
     ofSetBackgroundAuto(false);
 //    ofToggleFullscreen();
     
-    //    bgColor.set(0, 180, 180);
-    //    bgColor.set(0, 180, 180, 20);
+//    bgColor.set(0, 180, 180);
+//    bgColor.set(0, 180, 180, 20);
 //    bgColor.set(0, 20);
     bgColor.set(0, 20);
 	ofBackground(bgColor);
@@ -39,7 +39,7 @@ void testApp::setup(){
     /*---------------------------------------------*/
     
     /*-------------------- FOG --------------------*/
-    fogMovie.loadMovie("movies/fog2.mov");
+    fogMovie.loadMovie("movies/fog.mov");
 	fogMovie.play();
 //    fogMovie.setLoopState();
     /*---------------------------------------------*/

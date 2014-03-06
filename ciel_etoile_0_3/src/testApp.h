@@ -46,7 +46,7 @@ public:
     
     /*------------------- WI-FLY ------------------*/
     ofxUDPManager udpConnection;
-    
+//    vector<sensorData> sensors;    
     vector<ofVec3f> accel;
     vector<ofVec3f> magne;
     void updateConnection();

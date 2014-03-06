@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>1E6203B6-742F-45C0-9E94-D68489C2E416</string>
+	<string>7790318C-7A61-4B03-ACB1-384461E3E7BD</string>
 	<key>IDESourceControlProjectName</key>
 	<string>wiflyTest</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>BA5C8E9E-F961-461A-805C-8DF4F0FABBF8</key>
-		<string>https://github.com/namreta/Creative-Code-MidTerm.git</string>
+		<key>E44CB379-FDE0-4B2A-8140-93242730AE77</key>
+		<string>https://github.com/gianordoli/nws.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>wiflyTest/wiflyTest.xcodeproj/project.xcworkspace</string>
+	<string>wiflyClasses/wiflyTest.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>BA5C8E9E-F961-461A-805C-8DF4F0FABBF8</key>
+		<key>E44CB379-FDE0-4B2A-8140-93242730AE77</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/namreta/Creative-Code-MidTerm.git</string>
+	<string>https://github.com/gianordoli/nws.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>BA5C8E9E-F961-461A-805C-8DF4F0FABBF8</string>
+	<string>E44CB379-FDE0-4B2A-8140-93242730AE77</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>BA5C8E9E-F961-461A-805C-8DF4F0FABBF8</string>
+			<string>E44CB379-FDE0-4B2A-8140-93242730AE77</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Creative-Code-MidTerm</string>
+			<string>nws</string>
 		</dict>
 	</array>
 </dict>
