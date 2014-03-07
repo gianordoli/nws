@@ -28,5 +28,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>VIDEO</Name>
-    <Value>100.000000000</Value>
+    <Value>41.871921539</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GREEN</Name>
+    <Value>180.886688232</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BLUE</Name>
+    <Value>180.886688232</Value>
 </Widget>

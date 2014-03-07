@@ -87,6 +87,9 @@ void testApp::setup(){
 	tileModes.push_back("rotation");
     selectedTileMode = tileModes[1];
     
+    green = 180;
+    blue = 180;
+    
     int nTiles = int(ofGetWidth()/40) *  int(ofGetHeight()/40);
     int i = 0;
 	for (int gridY=0; gridY <= ofGetHeight(); gridY += 40) {
@@ -128,7 +131,7 @@ void testApp::update(){
     
     //BACKGROUND
 	for (int i=0; i < myTiles.size(); i++) {
-		myTiles[i].update(selectedTileMode, mouseX, mouseY, freq, threshold);
+		myTiles[i].update(selectedTileMode, mouseX, mouseY, freq, threshold, green, blue);
 	}
     
     //VIDEO
@@ -275,6 +278,14 @@ void testApp::guiEvent(ofxUIEventArgs &e){
     }else if(name == "VIDEO"){
         ofxUISlider *slider = (ofxUISlider *) e.widget;
         videoAlpha = slider->getScaledValue();
+    
+    }else if(name == "GREEN"){
+        ofxUISlider *slider = (ofxUISlider *) e.widget;
+        green = slider->getScaledValue();
+
+    }else if(name == "BLUE"){
+        ofxUISlider *slider = (ofxUISlider *) e.widget;
+        blue = slider->getScaledValue();
     }
 }
 
@@ -325,6 +336,12 @@ void testApp::setGUI2(){
     gui2->addSlider("THRESHOLD", 0, 4, threshold);
     
     gui2->addSlider("VIDEO", 0, 100, videoAlpha);
+    gui2->addSpacer();
+
+    gui2->addSlider("GREEN", 0, 255, green);
+    gui2->addSpacer();
+    
+    gui2->addSlider("BLUE", 0, 255, blue);
     gui2->addSpacer();
     
     gui2->autoSizeToFitWidgets();
