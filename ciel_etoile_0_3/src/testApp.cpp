@@ -55,6 +55,7 @@ void testApp::setup(){
     
     /*----------------- PARTICLES -----------------*/
     modes.push_back("static");
+    modes.push_back("walk");
     modes.push_back("fuzz");
     selectedMode = modes[0];
     
@@ -118,7 +119,7 @@ void testApp::update(){
 	myfft.powerSpectrum(0,(int)BUFFER_SIZE/2, left,BUFFER_SIZE,&magnitude[0],&phase[0],&power[0],&avg_power);
 	for (int i = 0; i < (int)(BUFFER_SIZE/2); i++){
 		freq[i] = magnitude[i];
-        cout << freq[i] << endl;
+//        cout << freq[i] << endl;
 	}
 	FFTanalyzer.calculate(freq);
 
