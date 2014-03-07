@@ -130,7 +130,6 @@
 		08A9C84B3CA68561BE01FF37 /* ofxUIWidget.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUIWidget.cpp; path = ../../../addons/ofxUI/src/ofxUIWidget.cpp; sourceTree = SOURCE_ROOT; };
 		0D6768C572B6CA49227C29EA /* ofxUINumberDialer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUINumberDialer.cpp; path = ../../../addons/ofxUI/src/ofxUINumberDialer.cpp; sourceTree = SOURCE_ROOT; };
 		0DE8B77977749C1835A9472B /* ofxUISlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUISlider.cpp; path = ../../../addons/ofxUI/src/ofxUISlider.cpp; sourceTree = SOURCE_ROOT; };
-		0F49C59318C910E20036B175 /* ciel_etoile_0_3Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ciel_etoile_0_3Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F56D55C18C6A8430098D4E3 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Particle.cpp; path = ../../ciel_etoile_0_1/src/Particle.cpp; sourceTree = "<group>"; };
 		0F56D55D18C6A8430098D4E3 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Particle.h; path = ../../ciel_etoile_0_1/src/Particle.h; sourceTree = "<group>"; };
 		0F56D55E18C6A8430098D4E3 /* Tiles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tiles.cpp; path = ../../ciel_etoile_background/src/Tiles.cpp; sourceTree = "<group>"; };
@@ -139,6 +138,7 @@
 		0F56D56118C6A8430098D4E3 /* fft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fft.cpp; path = ../../spacebrewSoundflower_example/src/fft.cpp; sourceTree = "<group>"; };
 		0F56D56218C6A8430098D4E3 /* fftOctaveAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fftOctaveAnalyzer.h; path = ../../spacebrewSoundflower_example/src/fftOctaveAnalyzer.h; sourceTree = "<group>"; };
 		0F56D56318C6A8430098D4E3 /* fftOctaveAnalyzer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fftOctaveAnalyzer.cpp; path = ../../spacebrewSoundflower_example/src/fftOctaveAnalyzer.cpp; sourceTree = "<group>"; };
+		0FC8C25B18C964C000EF7181 /* ciel_etoile_0_3Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ciel_etoile_0_3Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FE0B99918C8DC4A0093D1B0 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0FE0B9B418C8DC4A0093D1B0 /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Syphon.framework; sourceTree = "<group>"; };
 		0FE0B9B618C8DC4A0093D1B0 /* SyphonNameboundClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyphonNameboundClient.m; sourceTree = "<group>"; };
@@ -605,7 +605,7 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				0F49C59318C910E20036B175 /* ciel_etoile_0_3Debug.app */,
+				0FC8C25B18C964C000EF7181 /* ciel_etoile_0_3Debug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -655,7 +655,7 @@
 			);
 			name = ciel_etoile_0_3;
 			productName = myOFApp;
-			productReference = 0F49C59318C910E20036B175 /* ciel_etoile_0_3Debug.app */;
+			productReference = 0FC8C25B18C964C000EF7181 /* ciel_etoile_0_3Debug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
