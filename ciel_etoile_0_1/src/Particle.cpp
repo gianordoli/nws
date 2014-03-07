@@ -74,6 +74,9 @@ void Particle::update(Boolean GUImode, string _mode, string _shape, float _expan
     if(_mode == "fuzz"){
         randomPos.x = cos(angle*i) * (ofRandom(-ofGetHeight()/2, ofGetHeight()/2));
         randomPos.y = sin(angle*i) * (ofRandom(-ofGetHeight()/2, ofGetHeight()/2));
+    }else if(_mode == "walk"){
+        randomPos.x += ofRandom(-2, 2);
+        randomPos.y += ofRandom(-2, 2);
     }
     createShapePos();
     pos.x = ofLerp(randomPos.x, shapePos.x, expansion);
