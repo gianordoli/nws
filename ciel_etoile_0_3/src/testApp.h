@@ -117,8 +117,8 @@ public:
     string selectedTileMode;
     Boolean tileGUImode;
     float threshold;
-    float green;
-    float blue;
+
+    float hue;
     /*---------------------------------------------*/
     
 };

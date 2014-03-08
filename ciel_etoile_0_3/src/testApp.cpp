@@ -119,7 +119,7 @@ void testApp::update(){
     
     //BACKGROUND
 	for (int i=0; i < myTiles.size(); i++) {
-		myTiles[i].update(tileGUImode, selectedTileMode, mouseX, mouseY, freq, threshold, green, blue, accel2, magne2);
+		myTiles[i].update(tileGUImode, selectedTileMode, mouseX, mouseY, freq, threshold, hue, accel2, magne2);
 	}
     
     //VIDEO
@@ -267,13 +267,9 @@ void testApp::guiEvent(ofxUIEventArgs &e){
         cout << radio->getName() << " value: " << radio->getValue() << " active name: " << radio->getActiveName() << endl;
         selectedTileMode = radio->getActiveName();
         
-    }else if(name == "GREEN"){
+    }else if(name == "HUE"){
         ofxUISlider *slider = (ofxUISlider *) e.widget;
-        green = slider->getScaledValue();
-
-    }else if(name == "BLUE"){
-        ofxUISlider *slider = (ofxUISlider *) e.widget;
-        blue = slider->getScaledValue();
+        hue = slider->getScaledValue();
 
     }else if(name == "VIDEO"){
         ofxUISlider *slider = (ofxUISlider *) e.widget;
@@ -332,10 +328,7 @@ void testApp::setGUI2(){
     gui2->addRadio("TILE MODES", tileModes, OFX_UI_ORIENTATION_HORIZONTAL);
     gui2->addSpacer();
 
-    gui2->addSlider("GREEN", 0, 255, green);
-    gui2->addSpacer();
-
-    gui2->addSlider("BLUE", 0, 255, blue);
+    gui2->addSlider("HUE", 120, 160, hue);
     gui2->addSpacer();
     
     gui2->addSlider("VIDEO", 0, 170, videoAlpha);

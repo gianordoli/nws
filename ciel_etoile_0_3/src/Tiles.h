@@ -13,11 +13,14 @@ class Tiles : public ofBaseApp{
 	
 public:
 	void setup(int _nTiles, int _i, string _mode, int tempX, int tempY);
-	void update(Boolean GUImode, string _mode, float mouseX, float mouseY, float freq[], float _threshold, float _green, float _blue, vector<ofVec3f>& accel2, vector<ofVec3f>& magne2);
+	void update(Boolean GUImode, string _mode, float mouseX, float mouseY, float freq[], float _threshold, float _hue, vector<ofVec3f>& accel2, vector<ofVec3f>& magne2);
 	void draw (float mouseX, float mouseY);
     void createTileVertices();
     void createFragmentVertices();
 	
+    ofPoint average(vector<ofVec3f> myVector);
+    ofPoint lastAverage;
+    
     int nTiles;
     int i;
     
@@ -33,6 +36,7 @@ public:
     string mode;
     
     ofColor color;
+    float hue;
     
     float expansion;    /*This is gonna control the animation for all modes
                           it will be updated based on the frequency array */
