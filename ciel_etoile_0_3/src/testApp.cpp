@@ -6,8 +6,8 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	ofEnableSmoothing();
-    ofSetBackgroundAuto(false);
-    ofToggleFullscreen();
+//    ofSetBackgroundAuto(false);
+//    ofToggleFullscreen();
     
 //    bgColor.set(0, 180, 180);
 //    bgColor.set(0, 180, 180, 20);
@@ -189,7 +189,9 @@ void testApp::updateConnection(){
                 vector<string> dataPoints = ofSplitString(fullMsg[k],"\t");
                 //cout << "datapoints size: "<<dataPoints.size() << endl;
                 if (dataPoints.size() == 7) {
+                    
                     dataID = atof(dataPoints[0].c_str());
+                    
                     if(dataID == mySensorID){
                         accel.push_back(ofVec3f(atof(dataPoints[1].c_str()),atof(dataPoints[2].c_str()),atof(dataPoints[3].c_str())));
                         magne.push_back(ofVec3f(atof(dataPoints[4].c_str()),atof(dataPoints[5].c_str()),atof(dataPoints[6].c_str())));

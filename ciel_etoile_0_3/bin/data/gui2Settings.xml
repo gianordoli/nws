@@ -8,12 +8,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>3D</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>fragments</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -23,12 +23,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>THRESHOLD</Name>
-    <Value>0.768472910</Value>
+    <Value>0.650246322</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>VIDEO</Name>
-    <Value>41.871921539</Value>
+    <Value>21.674877167</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
