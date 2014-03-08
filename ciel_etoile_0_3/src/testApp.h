@@ -115,7 +115,10 @@ public:
     vector <Tiles> myTiles;
     vector <string> tileModes;
     string selectedTileMode;
+    Boolean tileGUImode;
     float threshold;
+    float green;
+    float blue;
     /*---------------------------------------------*/
     
 };

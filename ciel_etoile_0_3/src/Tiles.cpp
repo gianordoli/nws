@@ -39,7 +39,11 @@ void Tiles:: setup(int _nTiles, int _i, string _mode, int tempX, int tempY) {
 }
 //--------------------------------------------------------------
 
-void Tiles:: update(string _mode, float mouseX, float mouseY, float freq[], float _threshold, vector<ofVec3f>& accel2, vector<ofVec3f>& magne2) {
+void Tiles:: update(Boolean GUImode, string _mode, float mouseX, float mouseY, float freq[], float _threshold, float _green, float _blue, vector<ofVec3f>& accel2, vector<ofVec3f>& magne2) {
+    
+    if(GUImode){
+        color.set(0, _green, _blue, 150);
+    }
     
     mode = _mode;
     threshold = _threshold;

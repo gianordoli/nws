@@ -119,7 +119,7 @@ void testApp::update(){
     
     //BACKGROUND
 	for (int i=0; i < myTiles.size(); i++) {
-		myTiles[i].update(selectedTileMode, mouseX, mouseY, freq, threshold, accel2, magne2);
+		myTiles[i].update(tileGUImode, selectedTileMode, mouseX, mouseY, freq, threshold, green, blue, accel2, magne2);
 	}
     
     //VIDEO
@@ -257,19 +257,31 @@ void testApp::guiEvent(ofxUIEventArgs &e){
         
         
         /*---------------- BACKGROUND -----------------*/
+
+	}else if(name == "TILE GUI MODE"){
+        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
+        tileGUImode = toggle->getValue();
+        
     }else if(name == "TILE MODES"){
         ofxUIRadio *radio = (ofxUIRadio *) e.widget;
         cout << radio->getName() << " value: " << radio->getValue() << " active name: " << radio->getActiveName() << endl;
         selectedTileMode = radio->getActiveName();
         
-    }else if(name == "THRESHOLD"){
+    }else if(name == "GREEN"){
         ofxUISlider *slider = (ofxUISlider *) e.widget;
-        threshold = slider->getScaledValue();
+        green = slider->getScaledValue();
+
+    }else if(name == "BLUE"){
+        ofxUISlider *slider = (ofxUISlider *) e.widget;
+        blue = slider->getScaledValue();
 
     }else if(name == "VIDEO"){
         ofxUISlider *slider = (ofxUISlider *) e.widget;
         videoAlpha = slider->getScaledValue();
-    
+        
+    }else if(name == "THRESHOLD"){
+        ofxUISlider *slider = (ofxUISlider *) e.widget;
+        threshold = slider->getScaledValue();
     }
 }
 
@@ -314,13 +326,22 @@ void testApp::setGUI2(){
     gui2 = new ofxUISuperCanvas("BACKGROUND");
     gui2->addSpacer();
     
+    gui2->addToggle("TILE GUI MODE", tileGUImode);
+    gui1->addSpacer();
+    
     gui2->addRadio("TILE MODES", tileModes, OFX_UI_ORIENTATION_HORIZONTAL);
     gui2->addSpacer();
-    
-    gui2->addSlider("THRESHOLD", 0, 4, threshold);
+
+    gui2->addSlider("GREEN", 0, 255, green);
+    gui2->addSpacer();
+
+    gui2->addSlider("BLUE", 0, 255, blue);
+    gui2->addSpacer();
     
     gui2->addSlider("VIDEO", 0, 170, videoAlpha);
     gui2->addSpacer();
+    
+    gui2->addSlider("THRESHOLD", 0, 4, threshold);
     
     gui2->autoSizeToFitWidgets();
     ofAddListener(gui2->newGUIEvent,this,&testApp::guiEvent);
