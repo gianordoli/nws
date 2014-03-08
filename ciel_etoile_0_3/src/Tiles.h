@@ -13,7 +13,7 @@ class Tiles : public ofBaseApp{
 	
 public:
 	void setup(int _nTiles, int _i, string _mode, int tempX, int tempY);
-	void update(string _mode, float mouseX, float mouseY, float freq[], float _threshold,  float _green, float _blue);
+	void update(string _mode, float mouseX, float mouseY, float freq[], float _threshold, vector<ofVec3f>& accel2, vector<ofVec3f>& magne2);
 	void draw (float mouseX, float mouseY);
     void createTileVertices();
     void createFragmentVertices();

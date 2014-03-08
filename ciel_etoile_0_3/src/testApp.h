@@ -61,10 +61,12 @@ public:
     /*------------------- WI-FLY ------------------*/
     ofxUDPManager udpConnection;
 //    vector<sensorData> sensors;    
-    vector<ofVec3f> accel;
-    vector<ofVec3f> magne;
+    vector<ofVec3f> accel1;
+    vector<ofVec3f> magne1;
+    vector<ofVec3f> accel2;
+    vector<ofVec3f> magne2;
+
     void updateConnection();
-    int mySensorID;
     /*---------------------------------------------*/
 
     
@@ -114,8 +116,6 @@ public:
     vector <string> tileModes;
     string selectedTileMode;
     float threshold;
-    float green;
-    float blue;
     /*---------------------------------------------*/
     
 };
