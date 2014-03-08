@@ -47,19 +47,19 @@ void Tiles:: update(Boolean GUImode, string _mode, float mouseX, float mouseY, f
     }else{
         if(accel2.size() > 0){
             
-//            ofPoint diff = average(accel2) - lastAverage;
-//            diff.normalize();
-//            
-//            float green += diff.z * 10;
+            ofPoint diff = average(accel2) - lastAverage;
+            diff.normalize();
+            
+//            hue += diff.z * 10;
 //            green = ofClamp(green, 100, 200);
 //            
 //            rotation += diff.y * 10;
 //            rotation = ofClamp(rotation, 0, 360);
-//            
-//            size += diff.x * 10;
-//            size = ofClamp(size, 1, 30);
-//            
-//            lastAverage = average(accel1);
+            
+            hue += diff.x * 10;
+            hue = ofClamp(size, 120, 180);
+            
+            lastAverage = average(accel2);
         }
     }
     

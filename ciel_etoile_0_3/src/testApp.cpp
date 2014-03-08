@@ -331,7 +331,7 @@ void testApp::setGUI2(){
     gui2->addSlider("HUE", 120, 160, hue);
     gui2->addSpacer();
     
-    gui2->addSlider("VIDEO", 0, 170, videoAlpha);
+    gui2->addSlider("VIDEO", 0, 180, videoAlpha);
     gui2->addSpacer();
     
     gui2->addSlider("THRESHOLD", 0, 4, threshold);
