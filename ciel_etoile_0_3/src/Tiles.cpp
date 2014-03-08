@@ -19,7 +19,7 @@ void Tiles:: setup(int _nTiles, int _i, string _mode, int tempX, int tempY) {
 	gridPos.x = tempX;
 	gridPos.y = tempY;
     
-    color.set(0, 180, 180, 100);
+    color.set(0, 180, 180);
     
     breakage = size;
     createTileVertices();
@@ -44,7 +44,7 @@ void Tiles:: update(string _mode, float mouseX, float mouseY, float freq[], floa
     mode = _mode;
     threshold = _threshold;
     
-    color.set(0, _green, _blue, 100);
+    color.set(0, _green, _blue, 150);
     
     //Calculate index to use based on Tile index
 //    int index = ofMap(i, nTiles, 0, 0, 256);

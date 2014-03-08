@@ -13,22 +13,22 @@
 <Widget>
     <Kind>2</Kind>
     <Name>fragments</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>rotation</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>THRESHOLD</Name>
-    <Value>0.650246322</Value>
+    <Value>0.729064047</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>VIDEO</Name>
-    <Value>21.674877167</Value>
+    <Value>30.985221863</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

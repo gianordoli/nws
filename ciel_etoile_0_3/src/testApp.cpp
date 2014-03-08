@@ -6,15 +6,7 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	ofEnableSmoothing();
-//    ofSetBackgroundAuto(false);
-//    ofToggleFullscreen();
-    
-//    bgColor.set(0, 180, 180);
-//    bgColor.set(0, 180, 180, 20);
-//    bgColor.set(0, 20);
-    bgColor.set(0, 20);
-	ofBackground(bgColor);
-    //	ofBackground(255);
+	ofBackground(0);
     
     /*------------------ SYPHON ------------------*/
 	syphon.setName("ciel_etoile");
@@ -148,9 +140,6 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    ofSetColor(bgColor);
-    ofRect(0, 0, ofGetWidth(), ofGetHeight());
-
     //BACKGROUND
     for (int i = 0; i < myTiles.size(); i++) {
         myTiles[i].draw(mouseX, mouseY);
@@ -337,7 +326,7 @@ void testApp::setGUI2(){
     
     gui2->addSlider("THRESHOLD", 0, 4, threshold);
     
-    gui2->addSlider("VIDEO", 0, 100, videoAlpha);
+    gui2->addSlider("VIDEO", 0, 170, videoAlpha);
     gui2->addSpacer();
 
     gui2->addSlider("GREEN", 0, 255, green);
