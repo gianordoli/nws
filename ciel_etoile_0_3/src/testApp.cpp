@@ -145,16 +145,16 @@ void testApp::update(){
     fbo.begin();
         ofSetColor(0, 20);
         ofRect(0, 0, ofGetWidth(), ofGetHeight());
-        
+
         //BACKGROUND
         for (int i = 0; i < myTiles.size(); i++) {
             myTiles[i].draw(mouseX, mouseY);
         }
-        
+
         //VIDEO
         ofSetColor(255, videoAlpha);
         fogMovie.draw(0, 0, ofGetWidth(), ofGetHeight());
-        
+    
         //PARTICLES
         for(int i=0; i < myParticles.size(); i++){
             myParticles[i].draw();
