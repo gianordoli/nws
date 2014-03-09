@@ -8,7 +8,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>TILE GUI MODE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>HUE</Name>
-    <Value>120.591133118</Value>
+    <Value>132.019699097</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

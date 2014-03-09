@@ -50,14 +50,9 @@ void Tiles:: update(Boolean GUImode, string _mode, float mouseX, float mouseY, f
             ofPoint diff = average(accel2) - lastAverage;
             diff.normalize();
             
-//            hue += diff.z * 10;
-//            green = ofClamp(green, 100, 200);
-//            
-//            rotation += diff.y * 10;
-//            rotation = ofClamp(rotation, 0, 360);
-            
             hue += diff.x * 10;
-            hue = ofClamp(size, 120, 180);
+            hue = ofClamp(hue, 120, 180);
+//            hue = ofMap(average(accel2).z, 0, 360, 0, 255);
             
             lastAverage = average(accel2);
         }

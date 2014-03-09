@@ -23,8 +23,8 @@ void testApp::update(){
 	udpConnection.Receive(udpMessage,100000);
 	string message=udpMessage;
 	if(message!=""){
-//      cout << "raw msg: ";
-//		cout << message << endl;
+      cout << "raw msg: ";
+		cout << message << endl;
 
 		vector<string> fullMsg = ofSplitString(message,"/");
 //        cout << "fullMsg size "<<fullMsg.size() << endl;

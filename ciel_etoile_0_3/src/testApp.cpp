@@ -202,21 +202,30 @@ void testApp::updateConnection(){
                     if(dataID == 1){
                         accel1.push_back(ofVec3f(atof(dataPoints[1].c_str()),atof(dataPoints[2].c_str()),atof(dataPoints[3].c_str())));
                         magne1.push_back(ofVec3f(atof(dataPoints[4].c_str()),atof(dataPoints[5].c_str()),atof(dataPoints[6].c_str())));
+
+                        int readingNum = accel1.size();
+                        cout << "total readings: "<< readingNum;
+                        cout << "\tid: "<< dataID; //WHICH UNIT IS THIS ONE
+                        cout << "\tAccel: " << accel1[accel1.size()-1].x << ", " << accel1[accel1.size()-1].y << ", " << accel1[accel1.size()-1].z;
+                        cout << "\t\tMagne: " << magne1[magne1.size()-1].x << ", " << magne1[magne1.size()-1].y << ", " << magne1[magne1.size()-1].z << endl;
+                        
                         
                     }else if(dataID == 2){
                         accel2.push_back(ofVec3f(atof(dataPoints[1].c_str()),atof(dataPoints[2].c_str()),atof(dataPoints[3].c_str())));
                         magne2.push_back(ofVec3f(atof(dataPoints[4].c_str()),atof(dataPoints[5].c_str()),atof(dataPoints[6].c_str())));
+
+                        int readingNum = accel2.size();
+                        cout << "total readings: "<< readingNum;
+                        cout << "\tid: "<< dataID; //WHICH UNIT IS THIS ONE
+                        cout << "\tAccel: " << accel2[accel2.size()-1].x << ", " << accel2[accel2.size()-1].y << ", " << accel2[accel2.size()-1].z;
+                        cout << "\t\tMagne: " << magne2[magne2.size()-1].x << ", " << magne2[magne2.size()-1].y << ", " << magne2[magne2.size()-1].z << endl;
+                        
                         
                     }else{
                         cout << "This is not my ID!!!" << endl;
                     }
                     
                     
-                    int readingNum = accel1.size();
-//                    cout << "total readings: "<< readingNum;
-//                    cout << "\tid: "<< dataID; //WHICH UNIT IS THIS ONE
-//                    cout << "\tAccel: " << accel[accel.size()-1].x << ", " << accel[accel.size()-1].y << ", " << accel[accel.size()-1].z;
-//                    cout << "\t\tMagne: " << magne[accel.size()-1].x << ", " << magne[accel.size()-1].y << ", " << magne[accel.size()-1].z << endl;
                     
                 } else cout << "WRONG NUMBER OF DATAPOINTS RECEIVED: " << dataPoints.size() <<endl;
             }
