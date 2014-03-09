@@ -20,7 +20,7 @@ void Tiles:: setup(int _nTiles, int _i, string _mode, int tempX, int tempY) {
 	gridPos.y = tempY;
     
     hue = 125;
-    color.setHsb(125, 255, 255, 150);
+    color.setHsb(125, 255, 255, 100);
     
     breakage = size;
     createTileVertices();
@@ -63,7 +63,7 @@ void Tiles:: update(Boolean GUImode, string _mode, float mouseX, float mouseY, f
         }
     }
     
-    color.setHsb(hue, 255, 255, 150);
+    color.setHsb(hue, 255, 255, 100);
     
     mode = _mode;
     threshold = _threshold;
