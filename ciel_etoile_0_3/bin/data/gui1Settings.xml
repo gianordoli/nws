@@ -18,22 +18,22 @@
 <Widget>
     <Kind>2</Kind>
     <Name>walk</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>fuzz</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>circle</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>spiral</Name>
+    <Name>circle</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>spiral</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -48,7 +48,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>EXPANSION</Name>
-    <Value>1.000000000</Value>
+    <Value>0.985221684</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

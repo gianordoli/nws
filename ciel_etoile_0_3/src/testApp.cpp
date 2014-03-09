@@ -40,7 +40,7 @@ void testApp::setup(){
     
     /*------------------- SOUND -------------------*/
     soundStream.listDevices();
-  	soundStream.setDeviceID(2);
+  	soundStream.setDeviceID(7);
     
     //soundstream setup
     soundStream.setup(this, 0, 2, 44100, BUFFER_SIZE, 4);
@@ -144,30 +144,30 @@ void testApp::update(){
         myParticles[i].update(particleGUImode, selectedMode, selectedShape, expansion, shapeSize, nVertices, particleSize, rotation, currAverageAccel1, lastAverageAccel1);
     }
     lastAverageAccel1 = currAverageAccel1;
-    
+}
+
+//--------------------------------------------------------------
+void testApp::draw(){
+    ofBackground(0);
     
     fbo.begin();
         ofSetColor(0, 20);
         ofRect(0, 0, ofGetWidth(), ofGetHeight());
-
+        
         //BACKGROUND
         for (int i = 0; i < myTiles.size(); i++) {
             myTiles[i].draw(mouseX, mouseY);
         }
-
+        
         //VIDEO
         ofSetColor(255, videoAlpha);
         fogMovie.draw(0, 0, ofGetWidth(), ofGetHeight());
-    
+        
         //PARTICLES
         for(int i=0; i < myParticles.size(); i++){
             myParticles[i].draw();
         }
     fbo.end();
-}
-
-//--------------------------------------------------------------
-void testApp::draw(){
     
     ofSetColor(255);
     ofEnableAlphaBlending();
@@ -221,22 +221,22 @@ void testApp::updateConnection(){
                         accel1.push_back(ofVec3f(atof(dataPoints[1].c_str()),atof(dataPoints[2].c_str()),atof(dataPoints[3].c_str())));
                         magne1.push_back(ofVec3f(atof(dataPoints[4].c_str()),atof(dataPoints[5].c_str()),atof(dataPoints[6].c_str())));
 
-                        int readingNum = accel1.size();
-                        cout << "total readings: "<< readingNum;
-                        cout << "\tid: "<< dataID; //WHICH UNIT IS THIS ONE
-                        cout << "\tAccel: " << accel1[accel1.size()-1].x << ", " << accel1[accel1.size()-1].y << ", " << accel1[accel1.size()-1].z;
-                        cout << "\t\tMagne: " << magne1[magne1.size()-1].x << ", " << magne1[magne1.size()-1].y << ", " << magne1[magne1.size()-1].z << endl;
+//                        int readingNum = accel1.size();
+//                        cout << "total readings: "<< readingNum;
+//                        cout << "\tid: "<< dataID; //WHICH UNIT IS THIS ONE
+//                        cout << "\tAccel: " << accel1[accel1.size()-1].x << ", " << accel1[accel1.size()-1].y << ", " << accel1[accel1.size()-1].z;
+//                        cout << "\t\tMagne: " << magne1[magne1.size()-1].x << ", " << magne1[magne1.size()-1].y << ", " << magne1[magne1.size()-1].z << endl;
                         
                         
-                    }else if(dataID == 2){
+                    }else if(dataID == 4){
                         accel2.push_back(ofVec3f(atof(dataPoints[1].c_str()),atof(dataPoints[2].c_str()),atof(dataPoints[3].c_str())));
                         magne2.push_back(ofVec3f(atof(dataPoints[4].c_str()),atof(dataPoints[5].c_str()),atof(dataPoints[6].c_str())));
 
-                        int readingNum = accel2.size();
-                        cout << "total readings: "<< readingNum;
-                        cout << "\tid: "<< dataID; //WHICH UNIT IS THIS ONE
-                        cout << "\tAccel: " << accel2[accel2.size()-1].x << ", " << accel2[accel2.size()-1].y << ", " << accel2[accel2.size()-1].z;
-                        cout << "\t\tMagne: " << magne2[magne2.size()-1].x << ", " << magne2[magne2.size()-1].y << ", " << magne2[magne2.size()-1].z << endl;
+//                        int readingNum = accel2.size();
+//                        cout << "total readings: "<< readingNum;
+//                        cout << "\tid: "<< dataID; //WHICH UNIT IS THIS ONE
+//                        cout << "\tAccel: " << accel2[accel2.size()-1].x << ", " << accel2[accel2.size()-1].y << ", " << accel2[accel2.size()-1].z;
+//                        cout << "\t\tMagne: " << magne2[magne2.size()-1].x << ", " << magne2[magne2.size()-1].y << ", " << magne2[magne2.size()-1].z << endl;
                         
                         
                     }else{
