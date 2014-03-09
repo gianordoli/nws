@@ -18,7 +18,6 @@ void testApp::setup(){
 	udpConnection.Create();
 	udpConnection.Bind(11999);
 	udpConnection.SetNonBlocking(true);
-    mySensorID = 1;
     /*---------------------------------------------*/
 
     /*-------------------- FOG --------------------*/
@@ -79,9 +78,6 @@ void testApp::setup(){
 	tileModes.push_back("rotation");
     selectedTileMode = tileModes[1];
     
-    green = 180;
-    blue = 180;
-    
     int nTiles = int(ofGetWidth()/40) *  int(ofGetHeight()/40);
     int i = 0;
 	for (int gridY=0; gridY <= ofGetHeight(); gridY += 40) {
@@ -123,7 +119,7 @@ void testApp::update(){
     
     //BACKGROUND
 	for (int i=0; i < myTiles.size(); i++) {
-		myTiles[i].update(selectedTileMode, mouseX, mouseY, freq, threshold, green, blue);
+		myTiles[i].update(tileGUImode, selectedTileMode, mouseX, mouseY, freq, threshold, hue, accel2, magne2);
 	}
     
     //VIDEO
@@ -132,9 +128,8 @@ void testApp::update(){
     // PARTICLES
     for(int i=0; i < myParticles.size(); i++){
         
-        myParticles[i].update(particleGUImode, selectedMode, selectedShape, expansion, shapeSize, nVertices, particleSize, rotation, accel, magne);
+        myParticles[i].update(particleGUImode, selectedMode, selectedShape, expansion, shapeSize, nVertices, particleSize, rotation, accel1, magne1);
     }
-    
 }
 
 //--------------------------------------------------------------
@@ -181,15 +176,20 @@ void testApp::updateConnection(){
                     
                     dataID = atof(dataPoints[0].c_str());
                     
-                    if(dataID == mySensorID){
-                        accel.push_back(ofVec3f(atof(dataPoints[1].c_str()),atof(dataPoints[2].c_str()),atof(dataPoints[3].c_str())));
-                        magne.push_back(ofVec3f(atof(dataPoints[4].c_str()),atof(dataPoints[5].c_str()),atof(dataPoints[6].c_str())));
+                    if(dataID == 1){
+                        accel1.push_back(ofVec3f(atof(dataPoints[1].c_str()),atof(dataPoints[2].c_str()),atof(dataPoints[3].c_str())));
+                        magne1.push_back(ofVec3f(atof(dataPoints[4].c_str()),atof(dataPoints[5].c_str()),atof(dataPoints[6].c_str())));
+                        
+                    }else if(dataID == 2){
+                        accel2.push_back(ofVec3f(atof(dataPoints[1].c_str()),atof(dataPoints[2].c_str()),atof(dataPoints[3].c_str())));
+                        magne2.push_back(ofVec3f(atof(dataPoints[4].c_str()),atof(dataPoints[5].c_str()),atof(dataPoints[6].c_str())));
+                        
                     }else{
                         cout << "This is not my ID!!!" << endl;
                     }
                     
                     
-                    int readingNum = accel.size();
+                    int readingNum = accel1.size();
 //                    cout << "total readings: "<< readingNum;
 //                    cout << "\tid: "<< dataID; //WHICH UNIT IS THIS ONE
 //                    cout << "\tAccel: " << accel[accel.size()-1].x << ", " << accel[accel.size()-1].y << ", " << accel[accel.size()-1].z;
@@ -257,26 +257,27 @@ void testApp::guiEvent(ofxUIEventArgs &e){
         
         
         /*---------------- BACKGROUND -----------------*/
+
+	}else if(name == "TILE GUI MODE"){
+        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
+        tileGUImode = toggle->getValue();
+        
     }else if(name == "TILE MODES"){
         ofxUIRadio *radio = (ofxUIRadio *) e.widget;
         cout << radio->getName() << " value: " << radio->getValue() << " active name: " << radio->getActiveName() << endl;
         selectedTileMode = radio->getActiveName();
         
-    }else if(name == "THRESHOLD"){
+    }else if(name == "HUE"){
         ofxUISlider *slider = (ofxUISlider *) e.widget;
-        threshold = slider->getScaledValue();
+        hue = slider->getScaledValue();
 
     }else if(name == "VIDEO"){
         ofxUISlider *slider = (ofxUISlider *) e.widget;
         videoAlpha = slider->getScaledValue();
-    
-    }else if(name == "GREEN"){
+        
+    }else if(name == "THRESHOLD"){
         ofxUISlider *slider = (ofxUISlider *) e.widget;
-        green = slider->getScaledValue();
-
-    }else if(name == "BLUE"){
-        ofxUISlider *slider = (ofxUISlider *) e.widget;
-        blue = slider->getScaledValue();
+        threshold = slider->getScaledValue();
     }
 }
 
@@ -321,19 +322,19 @@ void testApp::setGUI2(){
     gui2 = new ofxUISuperCanvas("BACKGROUND");
     gui2->addSpacer();
     
+    gui2->addToggle("TILE GUI MODE", tileGUImode);
+    gui1->addSpacer();
+    
     gui2->addRadio("TILE MODES", tileModes, OFX_UI_ORIENTATION_HORIZONTAL);
+    gui2->addSpacer();
+
+    gui2->addSlider("HUE", 120, 160, hue);
+    gui2->addSpacer();
+    
+    gui2->addSlider("VIDEO", 0, 180, videoAlpha);
     gui2->addSpacer();
     
     gui2->addSlider("THRESHOLD", 0, 4, threshold);
-    
-    gui2->addSlider("VIDEO", 0, 170, videoAlpha);
-    gui2->addSpacer();
-
-    gui2->addSlider("GREEN", 0, 255, green);
-    gui2->addSpacer();
-    
-    gui2->addSlider("BLUE", 0, 255, blue);
-    gui2->addSpacer();
     
     gui2->autoSizeToFitWidgets();
     ofAddListener(gui2->newGUIEvent,this,&testApp::guiEvent);

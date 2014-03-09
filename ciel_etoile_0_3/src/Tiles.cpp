@@ -19,7 +19,8 @@ void Tiles:: setup(int _nTiles, int _i, string _mode, int tempX, int tempY) {
 	gridPos.x = tempX;
 	gridPos.y = tempY;
     
-    color.set(0, 180, 180);
+    hue = 125;
+    color.setHsb(125, 255, 255, 150);
     
     breakage = size;
     createTileVertices();
@@ -39,12 +40,33 @@ void Tiles:: setup(int _nTiles, int _i, string _mode, int tempX, int tempY) {
 }
 //--------------------------------------------------------------
 
-void Tiles:: update(string _mode, float mouseX, float mouseY, float freq[], float _threshold,  float _green, float _blue) {
+void Tiles:: update(Boolean GUImode, string _mode, float mouseX, float mouseY, float freq[], float _threshold, float _hue, vector<ofVec3f>& accel2, vector<ofVec3f>& magne2) {
+    
+    if(GUImode){
+        hue = _hue;
+    }else{
+        if(accel2.size() > 0){
+            
+            ofPoint diff = average(accel2) - lastAverage;
+            diff.normalize();
+            
+//            hue += diff.z * 10;
+//            green = ofClamp(green, 100, 200);
+//            
+//            rotation += diff.y * 10;
+//            rotation = ofClamp(rotation, 0, 360);
+            
+            hue += diff.x * 10;
+            hue = ofClamp(size, 120, 180);
+            
+            lastAverage = average(accel2);
+        }
+    }
+    
+    color.setHsb(hue, 255, 255, 150);
     
     mode = _mode;
     threshold = _threshold;
-    
-    color.set(0, _green, _blue, 150);
     
     //Calculate index to use based on Tile index
 //    int index = ofMap(i, nTiles, 0, 0, 256);
@@ -137,6 +159,19 @@ void Tiles::createFragmentVertices(){
         thisVertex.y = tileVertices[i].y + ofRandom(-breakage, breakage);
         fragmentVertices.push_back(thisVertex);
     }
+}
+
+ofPoint Tiles::average(vector<ofVec3f> myVector){
+    ofPoint sum;
+    for (int i = 0; i < myVector.size(); i++) {
+        sum.x += myVector[i].x;
+        sum.y += myVector[i].y;
+        sum.z += myVector[i].z;
+    }
+    sum.x /= myVector.size();
+    sum.y /= myVector.size();
+    sum.z /= myVector.size();
+    return sum;
 }
 
 //--------------------------------------------------------------

@@ -7,6 +7,11 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
+    <Name>TILE GUI MODE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>3D</Name>
     <Value>0</Value>
 </Widget>
@@ -22,21 +27,16 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>THRESHOLD</Name>
-    <Value>0.729064047</Value>
+    <Name>HUE</Name>
+    <Value>120.591133118</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>VIDEO</Name>
-    <Value>30.985221863</Value>
+    <Value>170.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>GREEN</Name>
-    <Value>180.886688232</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>BLUE</Name>
-    <Value>180.886688232</Value>
+    <Name>THRESHOLD</Name>
+    <Value>0.729064047</Value>
 </Widget>

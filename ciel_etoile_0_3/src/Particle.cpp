@@ -27,7 +27,7 @@ void Particle::init(int _nParticles, int _i, float _shapeSize, float _size, stri
     pos = randomPos;
 }
 
-void Particle::update(Boolean GUImode, string _mode, string _shape, float _expansion, float _shapeSize, float _nVertices, float _size, float _rotation, vector<ofVec3f>& accel, vector<ofVec3f>& magne){
+void Particle::update(Boolean GUImode, string _mode, string _shape, float _expansion, float _shapeSize, float _nVertices, float _size, float _rotation, vector<ofVec3f>& accel1, vector<ofVec3f>& magne1){
 //    cout << mode;
     float expansion = _expansion;
 
@@ -41,9 +41,9 @@ void Particle::update(Boolean GUImode, string _mode, string _shape, float _expan
         shapeSize = _shapeSize;
         rotation = _rotation;
     }else{
-        if(accel.size() > 0){
+        if(accel1.size() > 0){
 
-        ofPoint diff = average(accel) - lastAverage;
+        ofPoint diff = average(accel1) - lastAverage;
         diff.normalize();
         
             
@@ -56,7 +56,7 @@ void Particle::update(Boolean GUImode, string _mode, string _shape, float _expan
         size += diff.x * 10;
         size = ofClamp(size, 1, 30);
             
-        lastAverage = average(accel);
+        lastAverage = average(accel1);
 
 //        cout << "ACCEL x: " + ofToString(accelAverage.x) << " y: " + ofToString(accelAverage.y) << " z: " + ofToString(accelAverage.z) << endl;
 //
