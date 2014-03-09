@@ -27,7 +27,7 @@ void Particle::init(int _nParticles, int _i, float _shapeSize, float _size, stri
     pos = randomPos;
 }
 
-void Particle::update(Boolean GUImode, string _mode, string _shape, float _expansion, float _shapeSize, float _nVertices, float _size, float _rotation, vector<ofVec3f>& accel1, vector<ofVec3f>& magne1){
+void Particle::update(Boolean GUImode, string _mode, string _shape, float _expansion, float _shapeSize, float _nVertices, float _size, float _rotation, ofPoint _average, ofPoint _lastAverage){
 //    cout << mode;
     float expansion = _expansion;
 
@@ -41,9 +41,8 @@ void Particle::update(Boolean GUImode, string _mode, string _shape, float _expan
         shapeSize = _shapeSize;
         rotation = _rotation;
     }else{
-        if(accel1.size() > 0){
 
-        ofPoint diff = average(accel1) - lastAverage;
+        ofPoint diff = _average - _lastAverage;
         diff.normalize();
         
             
@@ -55,8 +54,6 @@ void Particle::update(Boolean GUImode, string _mode, string _shape, float _expan
 
         size += diff.x * 10;
         size = ofClamp(size, 1, 30);
-            
-        lastAverage = average(accel1);
 
 //        cout << "ACCEL x: " + ofToString(accelAverage.x) << " y: " + ofToString(accelAverage.y) << " z: " + ofToString(accelAverage.z) << endl;
 //
@@ -64,9 +61,7 @@ void Particle::update(Boolean GUImode, string _mode, string _shape, float _expan
 
 //        shapeSize = ofMap(average(magne).x, 0, 255, 0, ofGetHeight()/2 - 100);
 //        rotation = ofMap(average(magne).z, 0, 255, 0, 0, 360);
-            
-            
-        }
+        
     }
     
     float angle = ofDegToRad(360/float(nParticles));
@@ -90,19 +85,6 @@ void Particle::draw(){
         ofRotate(rotation);
             ofCircle(pos.x, pos.y, size, size);
     ofPopMatrix();
-}
-
-ofPoint Particle::average(vector<ofVec3f> myVector){
-    ofPoint sum;
-    for (int i = 0; i < myVector.size(); i++) {
-        sum.x += myVector[i].x;
-        sum.y += myVector[i].y;
-        sum.z += myVector[i].z;
-    }
-    sum.x /= myVector.size();
-    sum.y /= myVector.size();
-    sum.z /= myVector.size();
-    return sum;
 }
 
 void Particle::createRandomPos(){

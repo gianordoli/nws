@@ -128,18 +128,22 @@ void testApp::update(){
 
     
     //BACKGROUND
+    ofPoint currAverageAccel2 = average(accel2);
 	for (int i=0; i < myTiles.size(); i++) {
-		myTiles[i].update(tileGUImode, selectedTileMode, mouseX, mouseY, freq, threshold, hue, accel2, magne2);
+		myTiles[i].update(tileGUImode, selectedTileMode, mouseX, mouseY, freq, threshold, hue, currAverageAccel2, lastAverageAccel2);
 	}
+    lastAverageAccel2 = currAverageAccel2;
     
     //VIDEO
     fogMovie.update();
     
     // PARTICLES
+    ofPoint currAverageAccel1 = average(accel1);
     for(int i=0; i < myParticles.size(); i++){
         
-        myParticles[i].update(particleGUImode, selectedMode, selectedShape, expansion, shapeSize, nVertices, particleSize, rotation, accel1, magne1);
+        myParticles[i].update(particleGUImode, selectedMode, selectedShape, expansion, shapeSize, nVertices, particleSize, rotation, currAverageAccel1, lastAverageAccel1);
     }
+    lastAverageAccel1 = currAverageAccel1;
     
     
     fbo.begin();
@@ -174,6 +178,20 @@ void testApp::draw(){
     tex = fbo.getTextureReference();
     individualTextureSyphonServer.publishTexture(&tex);
 }
+
+ofPoint testApp::average(vector<ofVec3f> myVector){
+    ofPoint sum;
+    for (int i = 0; i < myVector.size(); i++) {
+        sum.x += myVector[i].x;
+        sum.y += myVector[i].y;
+        sum.z += myVector[i].z;
+    }
+    sum.x /= myVector.size();
+    sum.y /= myVector.size();
+    sum.z /= myVector.size();
+    return sum;
+}
+
 
 void testApp::updateConnection(){
     float aX,aY,aZ,mX,mY,mZ,dataID;

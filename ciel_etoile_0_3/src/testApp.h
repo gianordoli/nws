@@ -72,6 +72,10 @@ public:
     vector<ofVec3f> magne1;
     vector<ofVec3f> accel2;
     vector<ofVec3f> magne2;
+    
+    ofPoint average(vector<ofVec3f> myVector);
+    ofPoint lastAverageAccel1;
+    ofPoint lastAverageAccel2;
 
     void updateConnection();
     /*---------------------------------------------*/

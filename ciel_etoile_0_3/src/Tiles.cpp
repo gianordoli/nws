@@ -40,22 +40,19 @@ void Tiles:: setup(int _nTiles, int _i, string _mode, int tempX, int tempY) {
 }
 //--------------------------------------------------------------
 
-void Tiles:: update(Boolean GUImode, string _mode, float mouseX, float mouseY, float freq[], float _threshold, float _hue, vector<ofVec3f>& accel2, vector<ofVec3f>& magne2) {
+void Tiles:: update(Boolean GUImode, string _mode, float mouseX, float mouseY, float freq[], float _threshold, float _hue, ofPoint _average, ofPoint _lastAverage) {
     
     if(GUImode){
         hue = _hue;
     }else{
-        if(accel2.size() > 0){
             
-            ofPoint diff = average(accel2) - lastAverage;
+            ofPoint diff = _average - _lastAverage;
             diff.normalize();
             
             hue += diff.x * 10;
             hue = ofClamp(hue, 120, 180);
 //            hue = ofMap(average(accel2).z, 0, 360, 0, 255);
-            
-            lastAverage = average(accel2);
-        }
+
     }
     
     color.setHsb(hue, 255, 255, 100);
@@ -155,18 +152,4 @@ void Tiles::createFragmentVertices(){
         fragmentVertices.push_back(thisVertex);
     }
 }
-
-ofPoint Tiles::average(vector<ofVec3f> myVector){
-    ofPoint sum;
-    for (int i = 0; i < myVector.size(); i++) {
-        sum.x += myVector[i].x;
-        sum.y += myVector[i].y;
-        sum.z += myVector[i].z;
-    }
-    sum.x /= myVector.size();
-    sum.y /= myVector.size();
-    sum.z /= myVector.size();
-    return sum;
-}
-
 //--------------------------------------------------------------
