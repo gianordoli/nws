@@ -9,10 +9,20 @@ void testApp::setup(){
 	ofBackground(0);
     
     /*------------------ SYPHON ------------------*/
-	syphon.setName("ciel_etoile");
+//	syphon.setName("ciel_etoile");
+    individualTextureSyphonServer.setName("Texture Output");
+	mClient.setup();
+    mClient.set("","Simple Server");
     /*--------------------------------------------*/
-    
 
+    
+    /*-------------------- FBO -------------------*/
+    fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
+    fbo.begin();
+    ofClear(0);
+    fbo.end();
+    /*---------------------------------------------*/
+    
     /*------------------- WI-FLY ------------------*/
     //create the socket and bind to port 11999
 	udpConnection.Create();
@@ -130,26 +140,39 @@ void testApp::update(){
         
         myParticles[i].update(particleGUImode, selectedMode, selectedShape, expansion, shapeSize, nVertices, particleSize, rotation, accel1, magne1);
     }
+    
+    
+    fbo.begin();
+        ofSetColor(0, 20);
+        ofRect(0, 0, ofGetWidth(), ofGetHeight());
+        
+        //BACKGROUND
+        for (int i = 0; i < myTiles.size(); i++) {
+            myTiles[i].draw(mouseX, mouseY);
+        }
+        
+        //VIDEO
+        ofSetColor(255, videoAlpha);
+        fogMovie.draw(0, 0, ofGetWidth(), ofGetHeight());
+        
+        //PARTICLES
+        for(int i=0; i < myParticles.size(); i++){
+            myParticles[i].draw();
+        }
+    fbo.end();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    //BACKGROUND
-    for (int i = 0; i < myTiles.size(); i++) {
-        myTiles[i].draw(mouseX, mouseY);
-    }
+    ofSetColor(255);
+    ofEnableAlphaBlending();
+    fbo.draw(0, 0);
     
-    //VIDEO
-    ofSetColor(255, videoAlpha);
-    fogMovie.draw(0, 0, ofGetWidth(), ofGetHeight());
-    
-    //PARTICLES
-    for(int i=0; i < myParticles.size(); i++){
-        myParticles[i].draw();
-    }
-    
-	syphon.publishScreen();
+//	syphon.publishScreen();
+    ofTexture tex;
+    tex = fbo.getTextureReference();
+    individualTextureSyphonServer.publishTexture(&tex);
 }
 
 void testApp::updateConnection(){

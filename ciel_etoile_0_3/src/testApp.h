@@ -43,9 +43,16 @@ public:
     
     
     /*------------------ SYPHON ------------------*/
-	ofxSyphonServer syphon;
+//	ofxSyphonServer syphon;
+    ofxSyphonServer individualTextureSyphonServer;
+	ofxSyphonClient mClient;    
     /*--------------------------------------------*/
     
+    
+    /*-------------------- FBO -------------------*/
+    ofFbo fbo;
+    /*--------------------------------------------*/
+
     
     /*-------------------- GUI --------------------*/
 	void setGUI1();
