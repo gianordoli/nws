@@ -33,12 +33,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>spiral</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>star</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -48,27 +48,27 @@
 <Widget>
     <Kind>4</Kind>
     <Name>EXPANSION</Name>
-    <Value>0.000000000</Value>
+    <Value>0.975369453</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SHAPE SIZE</Name>
-    <Value>184.679794312</Value>
+    <Value>282.640411377</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>VERTICES</Name>
-    <Value>5.783448696</Value>
+    <Value>6.780000210</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>PARTICLE SIZE</Name>
-    <Value>5.344827652</Value>
+    <Value>5.586206913</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROTATION</Name>
-    <Value>0.000000000</Value>
+    <Value>39.014778137</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
